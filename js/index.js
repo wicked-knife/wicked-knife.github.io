@@ -45,6 +45,10 @@ $(function(){
         })
     };
 
+    function delete_config(){
+        //以后再写
+    }
+
     function check_task_detail(){
         $(".item_box").on("click",".detail",function(){
             if ($("shadow_cover").index()!==-1) {
