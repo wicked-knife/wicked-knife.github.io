@@ -1,1 +1,17 @@
-hello 张丝丝
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>冯罡的个人主页</title>
+</head>
+<body>
+    hello 张丝丝
+    <div id="showtime"></div>
+</body>
+<script>
+    window.onload=function(){
+        var showtime = document.getElementById("showtime");
+        showtime.innerText = "当前时间：" + new Date().toLocaleString();
+    }
+</script>
+</html>
