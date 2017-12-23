@@ -2,7 +2,7 @@
 ;'use strict';
 $(function(){
     var $input_todo = $(".input_todo");
-    var task_list = [];
+    var task_list;
     var task_count = 0;
 
     function submit_task(){
@@ -44,10 +44,6 @@ $(function(){
             };
         })
     };
-
-    function delete_config(){
-        //以后再写
-    }
 
     function check_task_detail(){
         $(".item_box").on("click",".detail",function(){
@@ -140,11 +136,18 @@ $(function(){
 
 
     ;(function init(){
+        if (store.get("task_list")) {
+            task_list = store.get("task_list");
+            for (var i =0;i<task_list.length;i++){
+                $(".item_box").append(render_task_item(task_list[i]));
+            };
+        }else{
+            task_list = [];
+        }
         delete_task();
         finish_task_item();
         submit_task();
         check_task_detail()
-        task_list = store.get("task_list") || [] ;
         })();
 
 })
