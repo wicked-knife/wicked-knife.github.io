@@ -140,7 +140,6 @@ $(function(){
 
 
     ;(function init(){
-        store.clear();
         delete_task();
         finish_task_item();
         submit_task();
