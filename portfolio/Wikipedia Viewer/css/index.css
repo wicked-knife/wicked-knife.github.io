@@ -1,0 +1,14 @@
+body{margin:0;padding:0;background:rgb(9,43,64);}
+#container{width: 1000px;margin:0 auto;}
+#search_container{width:100%;margin:0 auto;}
+#wiki_logo{display: block;width: 100px;margin:0 auto;margin-top: 50px;}
+#search_input{outline:none;border:solid 3px rgb(217,111,50);height: 35px;border-radius: 30px;box-sizing: border-box;padding:5px 10px;width: 300px;margin:0 auto;display: block;margin-top:50px;}
+#random_item,#search_item{padding:5px;background:rgb(200,200,200);border:solid 2px rgb(217,111,50);outline:none;border-radius:18px;color:rgb(9,43,64);cursor: pointer;margin-top:30px;font-size: 14px;width: 70px;transition:all 0.5s;}
+#random_item{margin-right: 20px}
+#search_item{margin-left: 20px;}
+#random_item:hover,#search_item:hover{background:rgb(245,245,245);}
+#button_box{display: block;margin:0 auto;text-align: center;}
+#item_container{width: 100%;margin-top:100px;}
+.item{width: 100%;background:rgb(230,230,230);padding:10px 40px;box-sizing:border-box;margin-bottom: 10px;transition:background 0.5s;cursor: pointer;display: none;}
+.item:hover{border-left: solid 6px rgb(217,111,50);margin-left:-6px;width: 1006px;background:rgb(200,200,200)}
+.item_desc{color:#333;}
