@@ -1,0 +1,228 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.active {
+  background: rgba(200, 200, 200, 0.8) !important;
+  box-shadow: 1px 1px 1px grey inset;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: url("http://api.dujin.org/bing/1920.php") no-repeat;
+  background-size: cover;
+  position: relative;
+  font-family: 'Microsoft Yahei';
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.loading img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.title {
+  color: #eee;
+  font-weight: 100;
+  text-align: center;
+  font-size: 40px;
+  text-shadow: 2px 4px 1px grey;
+  margin: 15px 0;
+}
+
+.container {
+  width: 870px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: rgba(33, 33, 33, 0.2);
+  border-radius: 5px;
+  padding: 20px;
+  border: 1px solid white;
+}
+
+.top {
+  width: 100%;
+  height: 50px;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid white;
+}
+
+.top .location_icon {
+  float: left;
+  width: 32px;
+  height: 50px;
+  background: url("../images/location.png") no-repeat;
+  background-position: 0 14px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.top .location_icon:hover {
+  margin-top: -20px;
+  height: 80px;
+}
+
+.top .location_input {
+  border: none;
+  outline: none;
+  background: rgba(33, 33, 33, 0);
+  color: white;
+  height: 50px;
+  font-size: 30px;
+  padding: 5px 15px;
+  font-family: 'Microsoft Yahei';
+  transition: all 0.3s;
+}
+
+.top .location_input:hover {
+  background: rgba(33, 33, 33, 0.2);
+}
+
+.top .temperature_icon {
+  width: 32px;
+  height: 50px;
+  background-position: 0 14px;
+  float: right;
+}
+
+.top .temperature_toggle {
+  float: right;
+  width: 70px;
+  height: 40px;
+}
+
+.top .temperature_toggle button {
+  margin-top: 10px;
+  width: 35px;
+  height: 40px;
+  outline: none;
+  border: none;
+  float: left;
+  cursor: pointer;
+  font-family: 'Microsoft Yahei';
+  background: rgba(200, 200, 200, 0.5);
+  transition: all 0.3s;
+}
+
+.top .temperature_toggle button:first-child {
+  border-radius: 3px 0 0 3px;
+}
+
+.top .temperature_toggle button:last-child {
+  border-radius: 0 3px 3px 0;
+}
+
+.mid {
+  width: 100%;
+  height: 300px;
+  border-bottom: 1px solid white;
+}
+
+.mid .weather_icon {
+  width: 50%;
+  height: 100%;
+  float: left;
+  background-position: 80px 50px;
+  background-repeat: no-repeat;
+}
+
+.mid .mid_right {
+  position: relative;
+  width: 50%;
+  height: 300px;
+  float: left;
+  color: #dcd7d2;
+  overflow: hidden;
+}
+
+.mid .mid_right .today_date {
+  height: 32px;
+  font-size: 30px;
+  margin-top: 10px;
+  line-height: 32px;
+}
+
+.mid .mid_right .temperature {
+  width: 80%;
+  height: 250px;
+  float: left;
+  font-size: 250px;
+  text-align: center;
+  margin-top: -40px;
+}
+
+.mid .mid_right .temperature_icon {
+  width: 20%;
+  height: 34px;
+  float: left;
+  font-size: 50px;
+}
+
+.mid .mid_right .high_temperature, .mid .mid_right .low_temperature {
+  float: left;
+  width: 25%;
+  font-size: 18px;
+  font-weight: 100;
+  line-height: 18px;
+  margin-top: 10px;
+}
+
+.bottom {
+  width: 100%;
+  height: 130px;
+}
+
+.bottom .next_day {
+  width: 25%;
+  height: 104%;
+  float: left;
+  text-align: center;
+  padding-top: 15px;
+  color: white;
+}
+
+.bottom .next_day span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.bottom .next_day p {
+  margin: 10px;
+}
+
+.bottom .next_day:hover {
+  transition: all 0.3s;
+  background: rgba(33, 33, 33, 0.3);
+}
+
+.bottom .tip {
+  width: 50%;
+  height: 114%;
+  float: left;
+  box-sizing: border-box;
+  font-size: 20px;
+  padding: 10px 10px 0 20px;
+  line-height: 30px;
+  color: #dcd7d2;
+}
+
+.bottom .tip:hover {
+  transition: all 0.3s;
+  background: rgba(33, 33, 33, 0.3);
+}
+/*# sourceMappingURL=index.css.map */
