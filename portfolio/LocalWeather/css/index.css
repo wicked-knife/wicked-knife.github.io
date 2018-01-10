@@ -225,4 +225,10 @@ body {
   transition: all 0.3s;
   background: rgba(33, 33, 33, 0.3);
 }
+
+.thanks {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 /*# sourceMappingURL=index.css.map */
