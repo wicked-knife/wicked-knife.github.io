@@ -17,7 +17,9 @@ $(function () {
         mapObj.addControl(geolocation);
         geolocation.getCityInfo( function (status , data) {
             render_location(data);
-            getTemperature(data.city);
+            getCurrentTemperature(data.city);
+            getForecastTemperature(data.city);
+            getTips(data.city);
         });
         // geolocation.getCityInfo( function (status , data) {
         //     console.log(data);
@@ -37,22 +39,58 @@ $(function () {
     //     })
 
     // })
-    function getTemperature( city ) {
+
+    function getCurrentTemperature( city ) {
         $.ajax({
-            url:"http://wthrcdn.etouch.cn/weather_mini",
+            url:"https://free-api.heweather.com/s6/weather/now",
             type:"POST",
             data:{
-                city:city,
+                location:city,
+                key:"d51b446bbb894df29facb8e447e28a4a" ,
             },
-            dataType:"jsonp",
-            success: function(data) {
-                if(data.desc !== "OK"){
-                    alert("请输入正确的地名(如:长沙)");
-                    return false;
-                }
-                render_temperature (data.data);
-                render_icon(data.data);
+            dataType:"JSON",
+            success:function(data) {
+                render_temperature( data["HeWeather6"][0]["now"] );   
+                render_icon( data["HeWeather6"][0]["now"] );
             },
+            error:function (){
+                alert("");
+            }
+        });
+    }
+    function getForecastTemperature( city ) {
+        $.ajax({
+            url:"https://free-api.heweather.com/s6/weather/forecast",
+            type:"POST",
+            data:{
+                location:city,
+                key:"d51b446bbb894df29facb8e447e28a4a" ,
+            },
+            dataType:"JSON",
+            success:function(data) {
+                render_forecast_temperature( data["HeWeather6"][0]["daily_forecast"] );
+            },
+            error:function (){
+
+            }
+        });
+    }
+
+    function getTips ( city ) {
+        $.ajax({
+            url:"https://free-api.heweather.com/s6/weather/lifestyle",
+            type:"POST",
+            data:{
+                location:city,
+                key:"d51b446bbb894df29facb8e447e28a4a" ,
+            },
+            dataType:"JSON",
+            success:function(data) {
+                render_tips(data["HeWeather6"][0]['lifestyle']);           
+            },
+            error:function (){
+
+            }
         });
     }
 
@@ -61,24 +99,31 @@ $(function () {
     }
 
     function render_temperature (data) {
-        var temperature = parseInt(data.wendu);
+        var temperature = parseInt(data.tmp);
         if(temperature < 0) {
             $(".temperature").css("font-size","210px");
         }else{
             $(".temperature").css("font-size","250px");
         }
-        $(".temperature").text(data.wendu);
-        $(".high_temperature").text(`${data.forecast[0].high}`);
-        $(".low_temperature").text(`${data.forecast[0].low}`);
-        $(".tomorrow").find(".next_temperature").text(`${data.forecast[1].high}${data.forecast[1].low}`);
-        $(".tomorrow_tomorrow").find(".next_temperature").text(`${data.forecast[2].high}${data.forecast[2].low}`);
-        $(".tomorrow").find(".next_weather").text(`${data.forecast[1].type}`);
-        $(".tomorrow_tomorrow").find(".next_weather").text(`${data.forecast[2].type}`);
-        $(".tip").text(data.ganmao);
+        $(".temperature").text(data.tmp);
+    }
+
+    function render_forecast_temperature (data) {
+        $(".high_temperature").text(`高温:${data[0]['tmp_max']}℃`);
+        $(".low_temperature").text(`低温:${data[0]['tmp_min']}℃`);
+        $(".tomorrow").find(".next_temperature").text(`高温:${data[1]['tmp_max']}℃  低温:${data[1]['tmp_min']}℃`);
+        $(".tomorrow_tomorrow").find(".next_temperature").text(`高温:${data[2]['tmp_max']}℃  低温:${data[2]['tmp_min']}℃`);
+        $(".tomorrow").find(".next_weather").text(`${data[1]['cond_txt_d']}`);
+        $(".tomorrow_tomorrow").find(".next_weather").text(`${data[2]['cond_txt_d']}`);
+        
+    }
+
+    function render_tips (data) {
+        $(".tip").text(`${data[1]['txt']}${data[2]['txt']}`);
     }
 
     function render_icon (data) {
-        switch (data.forecast[0].type) {
+        switch ( data['cond_txt'] ) {
             case "晴":
             $(".weather_icon").css({
                 backgroundImage:"url('./images/sun.png')"
@@ -95,12 +140,12 @@ $(function () {
             });
             break;
         }
-        if ( data.forecast[0].type.indexOf("雪") != -1) {
+        if ( data['cond_txt'].indexOf("雪") != -1) {
             $(".weather_icon").css({
                 backgroundImage:"url('./images/snow.png')"
             });
         }
-        if ( data.forecast[0].type.indexOf("雨") != -1) {
+        if ( data['cond_txt'].indexOf("雨") != -1) {
             $(".weather_icon").css({
                 backgroundImage:"url('./images/rain.png')"
             });
@@ -163,7 +208,9 @@ $(function () {
                 $("#fahrenheit_degree").removeClass("active");
                 $(".mid").find(".temperature_icon").text("℃");
                 var location  = $(".location_input").val();
-                getTemperature( location );
+                getCurrentTemperature( location );
+                getForecastTemperature ( location );
+                getTips ( location );
             });
         })();
     })();
