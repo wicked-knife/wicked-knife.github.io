@@ -50,11 +50,16 @@ $(function () {
             },
             dataType:"JSON",
             success:function(data) {
-                render_temperature( data["HeWeather6"][0]["now"] );   
-                render_icon( data["HeWeather6"][0]["now"] );
+                if(data["HeWeather6"][0]['status'] == "ok" ) {
+                    render_temperature( data["HeWeather6"][0]["now"] );   
+                    render_icon( data["HeWeather6"][0]["now"] );
+                }else{
+                    alert ("请输入正确的城市名称(如:'长沙')");
+                    return false;
+                }
             },
             error:function (){
-                alert("");
+
             }
         });
     }
@@ -207,15 +212,16 @@ $(function () {
                 $("#celsius_degree").addClass("active");
                 $("#fahrenheit_degree").removeClass("active");
                 $(".mid").find(".temperature_icon").text("℃");
-                var location  = $(".location_input").val();
-                getCurrentTemperature( location );
-                getForecastTemperature ( location );
-                getTips ( location );
+                var location  = $(".location_input").val(),
+                    config = true;
+                config = getCurrentTemperature( location );
+                if (config) {
+                    getForecastTemperature ( location );
+                    getTips ( location );
+                }
             });
         })();
     })();
-
-
 });
 
 window.onload = function () {
