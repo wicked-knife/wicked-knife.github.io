@@ -75,12 +75,13 @@ body {
 .top .location_icon:hover {
   margin-top: -20px;
   height: 80px;
+  transform: scale(1.2);
 }
 
 .top .location_input {
   border: none;
   outline: none;
-  background: rgba(33, 33, 33, 0);
+  background: rgba(33, 33, 33, 0.1);
   color: white;
   height: 50px;
   font-size: 30px;
@@ -90,7 +91,7 @@ body {
 }
 
 .top .location_input:hover {
-  background: rgba(33, 33, 33, 0.2);
+  background: rgba(33, 33, 33, 0.4);
 }
 
 .top .temperature_icon {

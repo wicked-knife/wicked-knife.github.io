@@ -68,11 +68,12 @@ body{
         &:hover{
             margin-top: -20px;
             height: 80px;
+            transform: scale(1.2);
         }
     }
     .location_input{
         border:none;outline:none;
-        background: rgba(33,33,33,0);
+        background: rgba(33,33,33,.1);
         color:white;
         height: 50px;
         font-size: 30px;
@@ -80,7 +81,7 @@ body{
         font-family: 'Microsoft Yahei';
         transition: all 0.3s;
         &:hover{
-            background: rgba(33,33,33,.2);
+            background: rgba(33,33,33,.4);
         }
     }
     .temperature_icon{
