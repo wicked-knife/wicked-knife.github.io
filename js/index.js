@@ -7,7 +7,8 @@ $(function(){
                         "portfolio/RandomQuoteMachine/index.html",
                         "portfolio/Wikipedia Viewer/index.html",
                         "portfolio/LocalWeather/index.html",
-                        "portfolio/eleme/index.html"];
+                        "portfolio/eleme/index.html",
+                        "portfolio/Music/index.html"];
         for(let i = 0;i<linkArr.length;i++) {
             $(".future_ui__piece").eq(i).on("click",function () {
                 window.open(linkArr[i],"_blank");
