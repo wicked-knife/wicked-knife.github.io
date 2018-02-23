@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Lorem Ipsum"
-tags:  portfolio tag2 tag3 tag4
+tags: tag2 tag3 tag4 portfolio
 ---
 
 ## Lorem Ipsum
