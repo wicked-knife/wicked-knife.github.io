@@ -1,9 +1,9 @@
 permalink: /:year:month:day/:title
-url: #Your url here
+url: https://ghostratel.github.io
 baseurl: /project
 
 # variables
-name: Your Site Name
+name: 冯罡的博客
 description: Your description here
 google_verification: null
 
