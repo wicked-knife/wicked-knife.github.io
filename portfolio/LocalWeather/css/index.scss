@@ -1,0 +1,200 @@
+@mixin show_bg(){
+    background: rgba(200, 200, 200, .4);
+    border-radius: 5px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    float: left;
+}
+$font_c:rgb(220,215,210);
+.clearfix{
+    &:after{
+        content:"";
+        display: table;
+        clear: both;
+    }
+}
+.active{
+    background: rgba(200,200,200,0.8) !important;
+    box-shadow: 1px 1px 1px grey inset;
+}
+
+body{
+    width:100%;height: 100%;
+    background: url('https://api.dujin.org/bing/1920.php') no-repeat;
+    background-size: cover;
+    position: relative;
+    font-family: 'Microsoft Yahei';
+}
+.loading{
+    width: 100%;height: 100%;
+    background: rgba(255,255,255,1);
+    position: fixed;
+    left:0;top:0;
+    img{
+        position: absolute;
+        left:0;top:0;right:0;bottom:0;
+        margin:auto;
+    }
+}
+.title{
+    color:#eee;
+    font-weight: 100;
+    text-align: center;
+    font-size: 40px;
+    text-shadow: 2px 4px 1px grey;
+    margin:15px 0;
+}
+.container{
+    width: 870px;
+    margin:0 auto;
+    box-sizing: border-box;
+    background: rgba(33,33,33,.2);
+    border-radius: 5px;
+    padding: 20px;
+    border:1px solid white;
+}
+.top{
+    width: 100%;height: 50px;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid white;
+    .location_icon{
+        float: left;
+        width: 32px;height: 50px;
+        background: url("../images/location.png") no-repeat;
+        background-position: 0 14px;
+        cursor: pointer;
+        transition: all 0.5s;
+        &:hover{
+            margin-top: -20px;
+            height: 80px;
+            transform: scale(1.2);
+        }
+    }
+    .location_input{
+        border:none;outline:none;
+        background: rgba(33,33,33,.1);
+        color:white;
+        height: 50px;
+        font-size: 30px;
+        padding: 5px 15px;
+        font-family: 'Microsoft Yahei';
+        transition: all 0.3s;
+        &:hover{
+            background: rgba(33,33,33,.4);
+        }
+    }
+    .temperature_icon{
+        width: 32px;height: 50px;
+        background-position: 0 14px;
+        float: right;
+    }
+    .temperature_toggle{
+        float: right;
+        width: 70px;height: 40px;
+        button{
+            margin-top: 10px;
+            width: 35px;height: 40px;
+            outline:none;border:none;
+            float: left;
+            cursor: pointer;
+            font-family: 'Microsoft Yahei';
+            background: rgba(200,200,200,0.5);
+            transition: all 0.3s;
+        }
+        button:first-child{
+            border-radius: 3px 0 0 3px;
+        }
+        button:last-child{
+            border-radius: 0 3px 3px 0;
+        }
+    }
+}
+
+.mid{
+    width: 100%;height: 300px;
+    border-bottom: 1px solid white;
+    .weather_icon{
+        width: 50%;height: 100%;
+        float: left;
+        background-position: 80px 50px;
+        background-repeat: no-repeat;
+    }
+    .mid_right{
+        position: relative;
+        width: 50%;height: 300px;
+        float: left;
+        color:$font_c;
+        overflow: hidden;
+        .today_date{
+            height: 32px;
+            font-size: 30px;
+            margin-top: 10px;
+            line-height: 32px;
+        }
+        .temperature{
+            box-sizing: border-box;
+            width: 80%;height: 250px;
+            float: left;
+            font-size: 250px;
+            text-align: center;
+            margin-top: -40px;
+        }
+        .temperature_icon{
+            width: 20%;height: 34px;
+            float: left;
+            font-size: 50px;
+        }
+        .high_temperature{
+            float: left;
+            width: 25%;
+            font-size: 18px;
+            font-weight: 100;
+            line-height: 18px;
+            margin-top: 10px;
+        }
+        .low_temperature{
+            @extend .high_temperature;
+        }
+    }
+}
+
+.bottom{
+    width: 100%;height: 130px;
+    .next_day{
+        width: 25%;height: 104%;
+        float: left;
+        text-align: center;
+        padding-top: 15px;
+        color:white;
+        span{
+            font-size: 20px;
+            font-weight: 600;
+        }
+        p{
+            margin:10px;
+        }
+        &:hover{
+            transition: all 0.3s;
+            background: rgba(33,33,33,.3);
+        }
+    }
+    .tip{
+        width: 50%;
+        height: 114%;
+        float: left;
+        box-sizing: border-box;
+        font-size: 18px;
+        padding:10px 5px 0 10px;
+        line-height:30px;
+        color:$font_c;
+        &:hover{
+            transition: all 0.3s;
+            background: rgba(33,33,33,.3);
+        }
+    }
+}
+.thanks{
+position: absolute;
+bottom: 0;right:0;
+}
