@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>windows下安装jekyll - 冯罡的博客</title>
+    <meta name="author"  content="冯罡">
+    <meta name="description" content="windows下安装jekyll">
+    <meta name="keywords"  content="jekyll">
+    <!-- Open Graph -->
+    <meta property="og:title" content="windows下安装jekyll - 冯罡的博客">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/2018/02/24/windows-install-jekyll.html">
+    <meta property="og:description" content="前端开发者，热爱技术。很高兴能在这里与你分享我对技术和生活的思考。">
+    <meta property="og:site_name" content="冯罡的博客">
+    <link rel="stylesheet" href="//cdn.staticfile.org/normalize/6.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_roc50gemkxpw4s4i.css">
+    <link rel="stylesheet" href="/assets/css/github-markdown.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/share.min.css">
+    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <!--[if lt IE 10]>
+<div class="alert-danger" role="alert">你的浏览器实在太太太旧了，放学别走，升级完浏览器再说！<a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div>
+<![endif]-->
+  <input id="nm-switch" type="hidden" value="false"> <header class="g-header">
+    <div class="g-logo">
+      <a href="/"></a>
+    </div>
+    <i id="menu-toggle" class="iconfont icon-menu"></i>
+    <nav class="g-nav">
+        <ul>
+            
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/tags.html">tags</a></li>
+            
+            <li><a href="/portfolio/portfolio.html">portfolio</a></li>
+            
+            <li><a href="http://fenggang.deercv.com/">resume</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+
+  <header class="g-banner post-header post-pattern-circuitBoard bgcolor-default " data-theme="default">
+    <div class="post-wrapper">
+      <div class="post-tags">
+        
+          
+            <a href="http://localhost:4000/tags#jekyll" class="post-tag">jekyll</a>
+          
+        
+      </div>
+      <h1>windows下安装jekyll</h1>
+      <div class="post-meta">
+        <span class="post-meta-item"><i class="iconfont icon-author"></i><a href="http://localhost:4000" target="_blank" rel="author">冯罡</a></span>
+        <time class="post-meta-item" datetime="18-02-24"><i class="iconfont icon-date"></i>24 Feb 2018</time>
+      </div>
+    </div>
+    
+    <div class="filter"></div>
+    <div class="post-cover" style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519468697477&di=d0bf0250ee3400dd540fefca60a9d76d&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2701852827%2C3566260664%26fm%3D214%26gp%3D0.jpg') center no-repeat; background-size: cover;">
+      
+  </header>
+
+  <div class="post-content visible">
+    
+
+    <article class="markdown-body">
+      <blockquote>
+  <p>记录一下我在windows下安装jekyll所踩的各种坑。</p>
+</blockquote>
+
+<p>写在前面：</p>
+
+<p>其实这篇博客算是我的第一篇博客。在昨天折腾了一天之后终于把这个小小的博客给搭了起来，其中大部分时间都是踩坑。。。现在网上基于githubpages + jekyll 搭建博客的教程数不胜数，我在这里也不再赘述，大家自行搜索即可。我在这里主要说下在windows系统下安装jekyll的各种坑。</p>
+
+<h2 id="0你需要知道的">0.你需要知道的</h2>
+
+<p><img src="http://i4.bvimg.com/632724/dfc3a905fd996c80.png" alt="" /></p>
+<h3 id="图片来自-jekyll中文网">图片来自 <a href="https://www.jekyll.com.cn/docs/installation/">jekyll中文网</a></h3>
+
+<p>首先你需要知道jekyll官方并不支持你在windows下安装jekyll,所以这可能就是在windows下安装jekyll有这么多坑的关系吧…所以能不用windows还是尽量别用windows吧..</p>
+
+<h2 id="1安装ruby">1.安装ruby</h2>
+
+<h3 id="ruby下载地址"><a href="https://rubyinstaller.org/downloads/">ruby下载地址</a></h3>
+
+<p>先安装ruby,别以为安装ruby无脑下一步就行了…要仔细看看版本,我就是吃了这个亏。直接下载<a href="https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.6.exe">ruby 2.2.6 32位</a>。</p>
+
+<p>你可能会问：我的windows是X64的为什么不安装X64的ruby？我只能告诉你会出问题，截图我也忘了留。。。我开始就是踩了这个坑，直到在stackoverflow上找到一个答案说装X86的试试，然后问题果然就解决了。。。至于问题的具体原因不明，有知道的大神还请告诉我一下。
+你可能又会问为什么偏偏安装ruby 2.2.6而不是其他版本。这个问题我会在稍后回答你。</p>
+
+<h2 id="2安装development-kit">2.安装DEVELOPMENT KIT</h2>
+
+<h3 id="development-kit-32bits下载地址"><a href="https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe">DEVELOPMENT KIT 32bits下载地址</a></h3>
+
+<p>安装DEVELOPMENT KIT,因为jekyll的安装有一些依赖关系,为了让它功能完整,我们需要安装ruby的开发工具。
+安装时你或许也留意到了<img src="http://i1.bvimg.com/632724/f79d574e85238690.png" alt="" />
+对,它仅仅支持ruby2.0 到 ruby 2.3。至于为什么不能安装ruby 2.2.6以下的版本,那是因为后面安装jekyll时jekyll的某个依赖需要ruby2.2.5以上的支持(同样忘了截图),那么你的选择就只有ruby 2.2.6了…尼玛是不是好多坑啊!!!</p>
+
+<p>至于为什么也安装32位的那是因为要和安装的ruby保持一致。下载好之后直接将文件解压即可,注意文件路径不要包含英文、空格。我建议你直接解压到C盘根目录下。比如这样<code class="language-css">C:\RubyDevKit\</code></p>
+
+<p>然后使用命令行工具进入之前的目录<code class="language-css">cd C:\RubyDevKit\</code></p>
+
+<p>输入<code class="language-css">ruby dk.rb init</code>来自动检测ruby的安装,并将其添加到配置文件中去。完成这一步之后在当前目录下找到config.yml文件,打开它。看看它是不是和我的一样。
+<img src="http://i2.bvimg.com/632724/6627d283df457ce0.png" alt="" />
+其实主要就是看看配置文件有没有最后一行,如果系统没有为你自动添加上去,那么就只有你自己手动将ruby路径添加上去了。注意: - 后 有一个空格。</p>
+
+<p>接着输入<code class="language-css">ruby dk.rb install</code>来将DevKit与你所安装的ruby绑定。</p>
+
+<h2 id="3安装jekyll">3.安装jekyll</h2>
+
+<p>哇,终于到安装jekyll了,是不是很激动。试着在命令行工具里输入<code class="language-css">gem install jekyll</code>
+如果成功了…emmmm算你运气好(不过应该不会成功…)
+假如你遇到这个错误了</p>
+<pre>
+<code class="language-css">   
+ERROR: Could not find a valid gem ‘jekyll’ (&gt;= 0), here is why: 
+Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: 
+ certificate verify failed (https://api.rubygems.org/latest_spece.4.8.gz)
+</code>
+</pre>
+<p>莫慌,这个错误的原因是因为<code class="highlighter-rouge">证书</code>问题，简单的解决办法为：下载最新的证书，放到指定文件夹，并配置环境变量。</p>
+
+<p><a href="http://curl.haxx.se/ca/cacert.pem">下载地址</a></p>
+
+<p>拷贝到ruby的bin目录下,环境变量进行如下配置:<img src="http://img.blog.csdn.net/20150325183352856" alt="" /></p>
+
+<p>继续安装,假如你又遇到了这个错误</p>
+
+<pre>
+<code class="language-css">   
+Dependency Error: Yikes! It looks like you don’t have jekyll-paginate or one of its dependencies installed. In order to use 
+Jekyll as currently configured, you’ll need to install this gem. The full error message from Ruby is: ‘cannot load such file
+ – jekyll-paginate’ If you run into trouble, you can find helpful resources at Getting Helpjekyll 3.1.2 | Error: jekyll-paginate
+</code>
+</pre>
+
+<p>直接输入<code class="language-css">gem install jekyll-paginate</code></p>
+
+<p>最后再再次输入<code class="language-css">gem install jekyll</code>
+这回应该就是没毛病了。如果你遇到了其他问题请联系我，我们一起解决。</p>
+
+<h2 id="4安装rouge">4.安装rouge</h2>
+
+<p>在命令行输入<code class="language-css">gem install rouge</code>
+然后在<code class="language-css">_config.yml</code>配置文件中配置
+<code class="language-css">highlighter: rouge</code>语法高亮。</p>
+
+<h2 id="5结束">5.结束</h2>
+<p>最后看到<img src="http://img.blog.csdn.net/20150325234516179" alt="" />这样的话,就代表jekyll安装成功了!</p>
+
+<p>至此,jekyll在windows下的安装就完成了。希望这篇文章能帮助苦恼的你。</p>
+
+<p>参考链接：</p>
+<ul>
+  <li>
+    <p><a href="http://jekyll-windows.juthilo.com/">http://jekyll-windows.juthilo.com/</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.csdn.net/wyc12306/article/details/51504885">http://blog.csdn.net/wyc12306/article/details/51504885</a></p>
+  </li>
+  <li>
+    <p><a href="http://blog.csdn.net/qiujuer/article/details/44620019">http://blog.csdn.net/qiujuer/article/details/44620019</a></p>
+  </li>
+</ul>
+
+    </article>
+
+    
+
+    
+    <div class="social-share-wrapper">
+      <div class="social-share"></div>
+    </div>
+    
+  </div>
+
+  <section class="author-detail">
+    <section class="post-footer-item author-card">
+      <div class="avatar">
+        <img src='http://i1.bvimg.com/632724/bdcf3ed7c13506b3.png'>
+      </div>
+      <div class="author-name" rel="author">冯罡</div>
+      <div class="bio">
+        <p>当阁下望着深渊时,深渊也在望着阁下</p>
+      </div>
+      
+      <ul class="sns-links">
+        
+        <li>
+          <a href="mailto:1353640486@qq.com" target="_blank">
+                    <i class="iconfont icon-email"></i>
+                </a>
+        </li>
+        
+        <li>
+          <a href="//weibo.com/u/3813700709" target="_blank">
+                    <i class="iconfont icon-weibo"></i>
+                </a>
+        </li>
+        
+        <li>
+          <a href="//github.com/ghostratel" target="_blank">
+                    <i class="iconfont icon-github"></i>
+                </a>
+        </li>
+        
+      </ul>
+      
+    </section>
+    <section class="post-footer-item read-next">
+      
+
+      
+    </section>
+
+    
+
+    
+    <section class="post-footer-item comment">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODEwMC80Njcz">
+    </section>
+    
+  </section>
+
+  
+  <!--
+Author: Ray-Eldath
+refer to:
+ - https://github.com/theme-next/hexo-theme-next/blob/master/source/js/src/utils.js
+ - https://jingyan.baidu.com/article/b2c186c83ec846c46ef6ff80.html
+ - http://www.bkjia.com/jQuery/449205.html
+-->
+<style media="screen">
+  .scroll {
+    z-index: 10000;
+    display: none;
+    width: 56px;
+    height: 24px;
+    background: #222;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+</style>
+<div class="scroll">
+  <i class="fa fa-arrow-up"></i>
+  <span class="scrollpercent"></span><span> %</span>
+</div>
+
+<script src="/assets/js/util.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (utils.isMobile()) {
+      $('.scroll').hide();
+      return;
+    }
+    $(window).scroll(function() {
+      let scrollValue = $(window).scrollTop();
+
+      var scrollPercentRounded = Math.round((scrollValue / utils.getContentVisibilityHeight()) * 100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+
+      $('.scrollpercent').html(scrollPercentMaxed);
+      scrollValue > 100 ? $('.scroll').fadeIn() : $('.scroll').fadeOut();
+    });
+
+    $('.scroll').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    })
+  })
+</script>
+
+
+
+<footer class="g-footer">
+  <section>冯罡的博客 ©
+  
+  
+  2018
+  </section>
+  <section>Powered by <a href="//jekyllrb.com">Jekyll</a> | <a href="https://github.com/kaeyleo/jekyll-theme-H2O">Theme H2O</a></section>
+</footer>
+
+
+  <script src="/assets/js/social-share.min.js"></script>
+  <script>
+    socialShare('.social-share', {
+      sites: [
+        
+          'wechat'
+          ,
+          
+        
+          'weibo'
+          ,
+          
+        
+          'douban'
+          ,
+          
+        
+          'twitter'
+          
+        
+      ],
+      wechatQrcodeTitle: "分享到微信朋友圈",
+      wechatQrcodeHelper: '<p>扫码后点击右上角</p><p>将本文分享至朋友圈</p>'
+    });
+  </script>
+
+
+
+
+<script>
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') {
+        return;
+      }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+
+  </script>
+
+
+  <noscript>为正常使用评论功能请激活JavaScript。</noscript>
+  <script src="/assets/js/prism.js"></script>
+  <script src="/assets/js/index.min.js"></script>
+</body>
+
+</html>
