@@ -1,6 +1,12 @@
 [
   
     {
+      "title"    : "ES6中最实用的特性",
+      "tags"     : "ES6",
+      "url"      : "/2018/02/25/ES6-useful.html"
+    } ,
+  
+    {
       "title"    : "windows下安装jekyll",
       "tags"     : "jekyll",
       "url"      : "/2018/02/24/windows-install-jekyll.html"

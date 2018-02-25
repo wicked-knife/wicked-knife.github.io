@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6中最实用的特性 - 冯罡的博客</title>
+    <meta name="author"  content="冯罡">
+    <meta name="description" content="ES6中最实用的特性">
+    <meta name="keywords"  content="ES6">
+    <!-- Open Graph -->
+    <meta property="og:title" content="ES6中最实用的特性 - 冯罡的博客">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:4000/2018/02/25/ES6-useful.html">
+    <meta property="og:description" content="前端开发者，热爱技术。很高兴能在这里与你分享我对技术和生活的思考。">
+    <meta property="og:site_name" content="冯罡的博客">
+    <link rel="stylesheet" href="//cdn.staticfile.org/normalize/6.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_roc50gemkxpw4s4i.css">
+    <link rel="stylesheet" href="/assets/css/github-markdown.css">
+    <link rel="stylesheet" href="/assets/css/prism.css">
+    <link rel="stylesheet" href="/assets/css/share.min.css">
+    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <!--[if lt IE 10]>
+<div class="alert-danger" role="alert">你的浏览器实在太太太旧了，放学别走，升级完浏览器再说！<a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a></div>
+<![endif]-->
+  <input id="nm-switch" type="hidden" value="false"> <header class="g-header">
+    <div class="g-logo">
+      <a href="/"></a>
+    </div>
+    <i id="menu-toggle" class="iconfont icon-menu"></i>
+    <nav class="g-nav">
+        <ul>
+            
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/tags.html">tags</a></li>
+            
+            <li><a href="/portfolio/portfolio.html">portfolio</a></li>
+            
+            <li><a href="http://fenggang.deercv.com/">resume</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+
+  <header class="g-banner post-header post-pattern-circuitBoard bgcolor-default " data-theme="default">
+    <div class="post-wrapper">
+      <div class="post-tags">
+        
+          
+            <a href="http://localhost:4000/tags#ES6" class="post-tag">ES6</a>
+          
+        
+      </div>
+      <h1>ES6中最实用的特性</h1>
+      <div class="post-meta">
+        <span class="post-meta-item"><i class="iconfont icon-author"></i><a href="http://localhost:4000" target="_blank" rel="author">冯罡</a></span>
+        <time class="post-meta-item" datetime="18-02-25"><i class="iconfont icon-date"></i>25 Feb 2018</time>
+      </div>
+    </div>
+    
+    <div class="filter"></div>
+    <div class="post-cover" style="background: url('http://img.debugrun.com/pic/2017/10/9/bc6c7da1b0289dec19f9a31e9df5bd7d.jpg') center no-repeat; background-size: cover;">
+      
+  </header>
+
+  <div class="post-content visible">
+    
+
+    <article class="markdown-body">
+      <blockquote>
+  <p>记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。</p>
+</blockquote>
+
+<h2 id="0目录">0.目录</h2>
+
+<ul>
+  <li>函数参数默认值</li>
+  <li>模板字符串</li>
+  <li>解构赋值</li>
+  <li>对象属性简写</li>
+  <li>箭头函数</li>
+  <li>Promise</li>
+  <li>Let与Const</li>
+  <li>类</li>
+  <li>模块化</li>
+  <li>Set</li>
+</ul>
+
+<h2 id="1函数参数默认值">1.函数参数默认值</h2>
+
+<h4 id="非es6">非ES6:</h4>
+<pre><code class="language-javascript">
+function foo(height, color)
+{
+    var height = height || 50
+    var color = color || 'red'
+    //...
+}
+</code></pre>
+<p>这样写一般没什么问题，但是当我们这样调用<code class="highlighter-rouge">foo</code>函数时：</p>
+<pre><code class="language-javascript">
+foo(0)
+</code></pre>
+<p><code class="highlighter-rouge">0</code>将进行强制类型转换为<code class="highlighter-rouge">false</code>,于是<code class="highlighter-rouge">height</code>就成了50。这显然不是我们所期望的。</p>
+
+<h4 id="es6">ES6：</h4>
+<pre><code class="language-javascript">
+function foo(height = 50, color = 'red')
+{
+    // ...
+}
+</code></pre>
+<p>上面这种情况就能得到很好地解决。</p>
+
+<h2 id="2模板字符串">2.模板字符串</h2>
+
+<h4 id="非es6-1">非ES6:</h4>
+<pre><code class="language-javascript">
+var name = 'Your name is ' + first + ' ' + last + '.'
+</code></pre>
+<p>只能使用<code class="highlighter-rouge">+</code>来进行字符串的拼接,这样不仅麻烦,而且在拼接的内容较复杂时,可读性会变得非常差,最重要的是非常容易出错!</p>
+
+<h4 id="es6-1">ES6：</h4>
+
+<pre><code class="language-javascript">
+var name = `Your name is ${first} ${last}.`
+</code></pre>
+<p>变量直接放在<code class="highlighter-rouge">${}</code>中,代码简洁,直观。</p>
+
+<h2 id="3解构赋值">3.解构赋值</h2>
+
+<h4 id="非es6-2">非ES6:</h4>
+<p>如获取对象属性值时:</p>
+<pre><code class="language-javascript">
+var data = $('body').data()  // data有house和mouse属性
+var house = data.house
+var mouse = data.mouse
+</code></pre>
+
+<h4 id="es6-2">ES6:</h4>
+<p>获取对象属性值时:</p>
+<pre><code class="language-javascript">
+var { house, mouse} = $('body').data()
+</code></pre>
+<p>对于数组:</p>
+<pre><code class="language-javascript">
+var [col1, col2]  = $('.column')
+</code></pre>
+
+<h2 id="4对象属性简写">4.对象属性简写</h2>
+
+<h4 id="非es6-3">非ES6:</h4>
+<p>当对象的<code class="highlighter-rouge">key</code>值和<code class="highlighter-rouge">value</code>的引用名称相同时:</p>
+<pre><code class="language-javascript">
+var bar = 'bar'
+var foo = function ()
+{
+    // ...
+}
+var baz = {
+  bar: bar,
+  foo: foo
+}
+</code></pre>
+
+<h4 id="es6-3">ES6:</h4>
+<p>对象中直接写变量，非常简单：</p>
+<pre><code class="language-javascript">
+var bar = 'bar'
+var foo = function ()
+{
+    // ...
+}
+var baz = { bar, foo }
+</code></pre>
+
+<h2 id="5箭头函数">5.箭头函数</h2>
+
+<h4 id="非es6-4">非ES6:</h4>
+<p>普通函数体内的<code class="highlighter-rouge">this</code>, 指向调用该函数的对象。</p>
+<pre><code class="language-javascript">
+function foo() 
+{
+    console.log(this.id)
+}
+var id = 1
+foo() // 输出1
+foo.call({ id: 2 }) // 输出2
+</code></pre>
+
+<h4 id="es6-4">ES6:</h4>
+<p>箭头函数内的<code class="highlighter-rouge">this</code>，就是定义该函数时this所指向的对象，而不是调用时所在的对象。</p>
+<pre><code class="language-javascript">
+var foo = () =&gt; {
+  console.log(this.id)
+}
+var id = 1
+foo() // 输出1
+foo.call({ id: 2 }) // 输出1
+</code></pre>
+
+<h2 id="6promise">6.Promise</h2>
+
+<h4 id="非es6-5">非ES6:</h4>
+<p>嵌套两个setTimeout回调函数：</p>
+<pre><code class="language-javascript">
+setTimeout(function()
+{
+    console.log('Hello') // 1秒后输出"Hello"
+    setTimeout(function()
+    {
+        console.log('Fundebug') // 2秒后输出"Fundebug"
+    }, 1000)
+}, 1000)
+</code></pre>
+
+<h4 id="es6-5">ES6:</h4>
+<p>使用两个then是异步编程串行化，避免了回调嵌套回调：</p>
+<pre><code class="language-javascript">
+var wait1000 = new Promise(function(resolve, reject)
+{
+    setTimeout(resolve, 1000)
+})
+wait1000
+    .then(function()
+    {
+        console.log("Hello") // 1秒后输出"Hello"
+        return wait1000
+    })
+    .then(function()
+    {
+        console.log("Fundebug") // 2秒后输出"Fundebug"
+    })
+</code></pre>
+
+<h2 id="7let与const">7.Let与Const</h2>
+
+<h4 id="非es6-6">非ES6:</h4>
+<p>var定义的变量没有块级作用域：</p>
+<pre><code class="language-javascript">
+{
+  var a = 10
+}
+console.log(a) // 输出10
+</code></pre>
+
+<h4 id="es6-6">ES6:</h4>
+<p>let定义的变量为块级作用域，因此会报错：</p>
+<pre><code class="language-javascript">
+{
+  let a = 10
+  const b = 10
+}
+console.log(a) // “ReferenceError: a is not defined”
+console.log(b) // “ReferenceError: b is not defined”
+</code></pre>
+
+<h2 id="8class">8.Class</h2>
+
+<h4 id="非es6-7">非ES6:</h4>
+<p>使用构造函数创建对象：</p>
+<pre><code class="language-javascript">
+function Point(x, y)
+{
+    this.x = x
+    this.y = y
+    this.add = function()
+    {
+        return this.x + this.y
+    }
+}
+var p = new Point(1, 2)
+console.log(p.add()) // 输出3
+</code></pre>
+
+<h4 id="es6-7">ES6:</h4>
+<p>使用Class定义类，更加规范，继承实现起来也很方便：</p>
+<pre><code class="language-javascript">
+class Point
+{
+    constructor(x, y)
+    {
+        this.x = x
+        this.y = y
+    }
+    add()
+    {
+        return this.x + this.y
+    }
+}
+var p = new Point(1, 2)
+console.log(p.add()) // 输出3
+</code></pre>
+
+<h2 id="9模块化">9.模块化</h2>
+
+<p>JavaScript一直没有官方的模块化解决方案，开发者在实践中主要采用<code class="highlighter-rouge">CommonJS</code>和<code class="highlighter-rouge">AMD</code>规范。而ES6制定了模块(<code class="highlighter-rouge">Module</code>)功能。</p>
+
+<h4 id="非es6-8">非ES6:</h4>
+<p>Node.js采用<code class="highlighter-rouge">CommenJS</code>规范实现了模块化，而前端也可以采用，只是在部署时需要使用Browserify等工具打包。这里不妨介绍一下<code class="highlighter-rouge">CommenJS</code>规范。
+module.js中使用module.exports导出port变量和getAccounts函数：</p>
+<pre><code class="language-javascript">
+// module.js
+module.exports = {
+  port: 3000,
+  getAccounts: function() {
+    ...
+  }
+}
+</code></pre>
+<p>main.js中使用require导入module.js：</p>
+<pre><code class="language-javascript">
+// main.js
+var service = require('module.js')
+console.log(service.port) // 输出3000
+</code></pre>
+
+<h4 id="es6-8">ES6:</h4>
+<p>ES6中使用export与import关键字实现模块化。
+module.js中使用export导出port变量和getAccounts函数：</p>
+<pre><code class="language-javascript">
+// module.js
+export var port = 3000
+export function getAccounts(url) {
+  ...
+}
+</code></pre>
+<p>main.js中使用import导入module.js，可以指定需要导入的变量：</p>
+<pre><code class="language-javascript">
+// main.js
+import {port, getAccounts} from 'module'
+console.log(port) // 输出3000
+</code></pre>
+<p>也可以将全部变量导入：</p>
+<pre><code class="language-javascript">
+// main.js
+import * as service from 'module'
+console.log(service.port) // 3000
+</code></pre>
+
+<h2 id="10set">10.Set</h2>
+<p>Set可以用来数组或者类数组的去重,十分方便。</p>
+<h4 id="非es6-9">非ES6:</h4>
+<p>使用indexOf去重:</p>
+<pre><code class="language-javascript">
+var arr=[1,3,5,4,3,3,1,4]
+function noRepeat(arr) {
+  var result = []
+  for(var i = 0; i&lt;arr.length; i++) {
+    if(result.indexOf(arr[i]) === -1) {
+      result.push(arr[i])
+    }
+  }
+  return result
+}      
+noRepeat(arr)
+</code></pre>
+
+<h4 id="es6-9">ES6:</h4>
+<pre><code class="language-javascript">
+const set = new Set([1, 2, 3, 4, 4])
+[...set]   // [1, 2, 3, 4]
+</code></pre>
+
+<p>参考链接：</p>
+<ul>
+  <li>
+    <p><a href="http://es6.ruanyifeng.com/">ECMAScript 6 入门</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.jqhtml.com/10638.html">http://www.jqhtml.com/10638.html</a></p>
+  </li>
+</ul>
+
+    </article>
+
+    
+
+    
+    <div class="social-share-wrapper">
+      <div class="social-share"></div>
+    </div>
+    
+  </div>
+
+  <section class="author-detail">
+    <section class="post-footer-item author-card">
+      <div class="avatar">
+        <img src='http://i1.bvimg.com/632724/bdcf3ed7c13506b3.png'>
+      </div>
+      <div class="author-name" rel="author">冯罡</div>
+      <div class="bio">
+        <p>当阁下望着深渊时,深渊也在望着阁下</p>
+      </div>
+      
+      <ul class="sns-links">
+        
+        <li>
+          <a href="mailto:1353640486@qq.com" target="_blank">
+                    <i class="iconfont icon-email"></i>
+                </a>
+        </li>
+        
+        <li>
+          <a href="//weibo.com/u/3813700709" target="_blank">
+                    <i class="iconfont icon-weibo"></i>
+                </a>
+        </li>
+        
+        <li>
+          <a href="//github.com/ghostratel" target="_blank">
+                    <i class="iconfont icon-github"></i>
+                </a>
+        </li>
+        
+      </ul>
+      
+    </section>
+    <section class="post-footer-item read-next">
+      
+
+      
+      <div class="read-next-item">
+        <a href="/2018/02/24/windows-install-jekyll.html" class="read-next-link"></a>
+          <section>
+            <span>windows下安装jekyll</span>
+            <p>  记录一下我在windows下安装jekyll所踩的各种坑。</p>
+          </section>
+          
+          <div class="filter"></div>
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1519468697477&di=d0bf0250ee3400dd540fefca60a9d76d&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2701852827%2C3566260664%26fm%3D214%26gp%3D0.jpg" alt="">
+          
+      </div>
+      
+    </section>
+
+    
+
+    
+    <section class="post-footer-item comment">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODEwMC80Njcz">
+    </section>
+    
+  </section>
+
+  
+  <!--
+Author: Ray-Eldath
+refer to:
+ - https://github.com/theme-next/hexo-theme-next/blob/master/source/js/src/utils.js
+ - https://jingyan.baidu.com/article/b2c186c83ec846c46ef6ff80.html
+ - http://www.bkjia.com/jQuery/449205.html
+-->
+<style media="screen">
+  .scroll {
+    z-index: 10000;
+    display: none;
+    width: 56px;
+    height: 24px;
+    background: #222;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+</style>
+<div class="scroll">
+  <i class="fa fa-arrow-up"></i>
+  <span class="scrollpercent"></span><span> %</span>
+</div>
+
+<script src="/assets/js/util.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    if (utils.isMobile()) {
+      $('.scroll').hide();
+      return;
+    }
+    $(window).scroll(function() {
+      let scrollValue = $(window).scrollTop();
+
+      var scrollPercentRounded = Math.round((scrollValue / utils.getContentVisibilityHeight()) * 100);
+      var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 : scrollPercentRounded;
+
+      $('.scrollpercent').html(scrollPercentMaxed);
+      scrollValue > 100 ? $('.scroll').fadeIn() : $('.scroll').fadeOut();
+    });
+
+    $('.scroll').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 300);
+    })
+  })
+</script>
+
+
+
+<footer class="g-footer">
+  <section>冯罡的博客 ©
+  
+  
+  2018
+  </section>
+  <section>Powered by <a href="//jekyllrb.com">Jekyll</a> | <a href="https://github.com/kaeyleo/jekyll-theme-H2O">Theme H2O</a></section>
+</footer>
+
+
+  <script src="/assets/js/social-share.min.js"></script>
+  <script>
+    socialShare('.social-share', {
+      sites: [
+        
+          'wechat'
+          ,
+          
+        
+          'weibo'
+          ,
+          
+        
+          'douban'
+          ,
+          
+        
+          'twitter'
+          
+        
+      ],
+      wechatQrcodeTitle: "分享到微信朋友圈",
+      wechatQrcodeHelper: '<p>扫码后点击右上角</p><p>将本文分享至朋友圈</p>'
+    });
+  </script>
+
+
+
+
+<script>
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+
+      if (typeof LivereTower === 'function') {
+        return;
+      }
+
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+
+  </script>
+
+
+  <noscript>为正常使用评论功能请激活JavaScript。</noscript>
+  <script src="/assets/js/prism.js"></script>
+  <script src="/assets/js/index.min.js"></script>
+</body>
+
+</html>
