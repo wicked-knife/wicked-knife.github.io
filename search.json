@@ -1,6 +1,12 @@
 [
   
     {
+      "title"    : "Webpack4 初尝试",
+      "tags"     : "webpack",
+      "url"      : "/2018/03/18/webpack4.html"
+    } ,
+  
+    {
       "title"    : "记录下写微信小程序所踩的坑",
       "tags"     : "微信小程序",
       "url"      : "/2018/03/05/weixinapp.html"
