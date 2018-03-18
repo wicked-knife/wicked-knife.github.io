@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>记录下写微信小程序所踩的坑 - 冯罡的博客</title>
+    <title>Webpack4 初尝试 - 冯罡的博客</title>
     <meta name="author"  content="冯罡">
-    <meta name="description" content="记录下写微信小程序所踩的坑">
-    <meta name="keywords"  content="微信小程序">
+    <meta name="description" content="Webpack4 初尝试">
+    <meta name="keywords"  content="webpack">
     <!-- Open Graph -->
-    <meta property="og:title" content="记录下写微信小程序所踩的坑 - 冯罡的博客">
+    <meta property="og:title" content="Webpack4 初尝试 - 冯罡的博客">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://localhost:4000/2018/03/05/weixinapp.html">
+    <meta property="og:url" content="http://localhost:4000/2018/03/18/webpack4.html">
     <meta property="og:description" content="前端开发者，热爱技术。很高兴能在这里与你分享我对技术和生活的思考。">
     <meta property="og:site_name" content="冯罡的博客">
     <link rel="stylesheet" href="//cdn.staticfile.org/normalize/6.0.0/normalize.min.css">
@@ -53,19 +53,19 @@
       <div class="post-tags">
         
           
-            <a href="http://localhost:4000/tags#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F" class="post-tag">微信小程序</a>
+            <a href="http://localhost:4000/tags#webpack" class="post-tag">webpack</a>
           
         
       </div>
-      <h1>记录下写微信小程序所踩的坑</h1>
+      <h1>Webpack4 初尝试</h1>
       <div class="post-meta">
         <span class="post-meta-item"><i class="iconfont icon-author"></i><a href="http://localhost:4000" target="_blank" rel="author">冯罡</a></span>
-        <time class="post-meta-item" datetime="18-03-05"><i class="iconfont icon-date"></i>05 Mar 2018</time>
+        <time class="post-meta-item" datetime="18-03-18"><i class="iconfont icon-date"></i>18 Mar 2018</time>
       </div>
     </div>
     
     <div class="filter"></div>
-    <div class="post-cover" style="background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520228034256&di=a2a81fa5f711956ec0ec61dc2d9011da&imgtype=0&src=http%3A%2F%2Fimg.pc841.com%2F2017%2F0116%2F20170116095658280.jpg') center no-repeat; background-size: cover;">
+    <div class="post-cover" style="background: url('http://webpack.github.io/assets/what-is-webpack.png') center no-repeat; background-size: cover;">
       
   </header>
 
@@ -73,46 +73,7 @@
     
 
     <article class="markdown-body">
-      <blockquote>
-  <p>记录下我自己在写微信小程序时所踩的坑。</p>
-</blockquote>
-
-<h2 id="1出现脚本错误或者未正确调用page的错误提示">1.出现“脚本错误或者未正确调用Page（）”的错误提示。</h2>
-<p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r1knkyfj20g700twew.jpg" alt="" /></p>
-
-<p>出现这个错误的原因通常是因为对应页面的js文件里，没有调用Page方法。即使js文件里没有任何代码，也需要在js里添加一个空的 Page（{ }）。注意Page的P要大写。</p>
-
-<h2 id="2出现expecting-stringnumbernulltrue的错误提示">2.出现“Expecting ‘String，‘Number，‘NULL，‘True….’”’’的错误提示。</h2>
-<p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r54ta87j20gu01fq3u.jpg" alt="" /></p>
-
-<p>出现这个错误的原因在于对应页面的json文件没有加入{ }。即使json文件里没有任何内容，也需要加入一个{ }，作为默认代码。json文件不允许出现注释代码，如果有注释的代码，同样会报这个错误。</p>
-
-<h2 id="3在真机预览时会出现缺少文件错误信息erroriconpathfile-not-found">3.在真机预览时，会出现“缺少文件，错误信息：error:iconPath=…….file not found?”</h2>
-<p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r6mc3ioj20g302kjr9.jpg" alt="" /></p>
-
-<p>在开发工具中-&gt;项目-&gt;预览时，有时候会报以上错误。错误的原因是因为，app.json的tabBar选项中，list下的iconPath出现了绝对路径 “ / ”，比如</p>
-<pre>
-<code class="language-javascript">
-    "list": [{
-      "pagePath": "pages/movies/movies",
-      "iconPath": "/images/tab/dianying.png",
-      "selectedIconPath": "images/tab/dianying_hl.png",
-      "text": "电影"
-    }, {
-        "pagePath": "pages/setting/setting",
-        "iconPath": "/images/tab/set.png",
-        "selectedIconPath": "images/tab/set_hl.png",
-        "text": "设置"
-      }],
-</code>
-</pre>
-<p>iconPath 以 “/”开头(绝对路径)，就会出现以上错误。请使用相对路径。</p>
-
-<h2 id="4使用wxrequest请求豆瓣api地址出现403错误">4.使用wx.request请求豆瓣API地址，出现403错误。</h2>
-<p>在网上查了一圈之后发现是豆瓣禁止了小程序的请求。具体解决办法是通过自己的服务器代理请求,并修改请求头的Referer和User-Agent信息。具体方法为<a href="https://www.jianshu.com/p/75e4ffc2245a">小程序请求豆瓣API报403解决方法</a>。</p>
-
-<h2 id="5暂时就这些">5.暂时就这些..</h2>
-<p>后续遇到问题我会继续更新…</p>
+      <p>先占个坑</p>
 
     </article>
 
@@ -160,29 +121,17 @@
     </section>
     <section class="post-footer-item read-next">
       
-      <div class="read-next-item">
-        <a href="/2018/03/18/webpack4.html" class="read-next-link"></a>
-        <section>
-          <span>Webpack4 初尝试</span>
-          <p>先占个坑</p>
-        </section>
-        
-        <div class="filter"></div>
-        <img src="http://webpack.github.io/assets/what-is-webpack.png" alt="">
-        
-     </div>
-      
 
       
       <div class="read-next-item">
-        <a href="/2018/02/25/ES6-useful.html" class="read-next-link"></a>
+        <a href="/2018/03/05/weixinapp.html" class="read-next-link"></a>
           <section>
-            <span>ES6中最实用的特性</span>
-            <p>  记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。</p>
+            <span>记录下写微信小程序所踩的坑</span>
+            <p>  记录下我自己在写微信小程序时所踩的坑。</p>
           </section>
           
           <div class="filter"></div>
-          <img src="http://img.debugrun.com/pic/2017/10/9/bc6c7da1b0289dec19f9a31e9df5bd7d.jpg" alt="">
+          <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520228034256&di=a2a81fa5f711956ec0ec61dc2d9011da&imgtype=0&src=http%3A%2F%2Fimg.pc841.com%2F2017%2F0116%2F20170116095658280.jpg" alt="">
           
       </div>
       
