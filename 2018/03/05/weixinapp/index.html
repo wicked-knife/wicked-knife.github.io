@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>记录下写微信小程序所踩的坑 | Hexo</title>
+  <meta name="author" content="Gang Feng">
+  
+  <meta name="description" content="记录下我自己在写微信小程序时所踩的坑。
+
+1.出现“脚本错误或者未正确调用Page（）”的错误提示。
+出现这个错误的原因通常是因为对应页面的js文件里，没有调用Page方法。即使js文件里没有任何代码，也需要在js里添加一个空的 Page（{ }）。注意Page的P要大写。
+2.出现“Expecti">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="记录下写微信小程序所踩的坑"/>
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+    <meta property="og:image" content="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1520228034256&amp;di=a2a81fa5f711956ec0ec61dc2d9011da&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.pc841.com%2F2017%2F0116%2F20170116095658280.jpg" />
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">Hexo</a><span class="split"></span><span class="title">记录下写微信小程序所踩的坑</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2018-03-05</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <blockquote>
+<p>记录下我自己在写微信小程序时所踩的坑。</p>
+</blockquote>
+<h2 id="1-出现“脚本错误或者未正确调用Page（）”的错误提示。"><a href="#1-出现“脚本错误或者未正确调用Page（）”的错误提示。" class="headerlink" title="1.出现“脚本错误或者未正确调用Page（）”的错误提示。"></a>1.出现“脚本错误或者未正确调用Page（）”的错误提示。</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r1knkyfj20g700twew.jpg" alt=""></p>
+<p>出现这个错误的原因通常是因为对应页面的js文件里，没有调用Page方法。即使js文件里没有任何代码，也需要在js里添加一个空的 Page（{ }）。注意Page的P要大写。</p>
+<h2 id="2-出现“Expecting-‘String，‘Number，‘NULL，‘True…-’”’’的错误提示。"><a href="#2-出现“Expecting-‘String，‘Number，‘NULL，‘True…-’”’’的错误提示。" class="headerlink" title="2.出现“Expecting ‘String，‘Number，‘NULL，‘True….’”’’的错误提示。"></a>2.出现“Expecting ‘String，‘Number，‘NULL，‘True….’”’’的错误提示。</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r54ta87j20gu01fq3u.jpg" alt=""></p>
+<p>出现这个错误的原因在于对应页面的json文件没有加入{ }。即使json文件里没有任何内容，也需要加入一个{ }，作为默认代码。json文件不允许出现注释代码，如果有注释的代码，同样会报这个错误。</p>
+<h2 id="3-在真机预览时，会出现“缺少文件，错误信息：error-iconPath-……-file-not-found-”"><a href="#3-在真机预览时，会出现“缺少文件，错误信息：error-iconPath-……-file-not-found-”" class="headerlink" title="3.在真机预览时，会出现“缺少文件，错误信息：error:iconPath=…….file not found?”"></a>3.在真机预览时，会出现“缺少文件，错误信息：error:iconPath=…….file not found?”</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r6mc3ioj20g302kjr9.jpg" alt=""></p>
+<p>在开发工具中-&gt;项目-&gt;预览时，有时候会报以上错误。错误的原因是因为，app.json的tabBar选项中，list下的iconPath出现了绝对路径 “ / ”，比如</p>
+<p><pre><br><code class="language-javascript"><br>    “list”: [{<br>      “pagePath”: “pages/movies/movies”,<br>      “iconPath”: “/images/tab/dianying.png”,<br>      “selectedIconPath”: “images/tab/dianying_hl.png”,<br>      “text”: “电影”<br>    }, {<br>        “pagePath”: “pages/setting/setting”,<br>        “iconPath”: “/images/tab/set.png”,<br>        “selectedIconPath”: “images/tab/set_hl.png”,<br>        “text”: “设置”<br>      }],<br></code><br></pre><br>iconPath 以 “/”开头(绝对路径)，就会出现以上错误。请使用相对路径。</p>
+<h2 id="4-使用wx-request请求豆瓣API地址，出现403错误。"><a href="#4-使用wx-request请求豆瓣API地址，出现403错误。" class="headerlink" title="4.使用wx.request请求豆瓣API地址，出现403错误。"></a>4.使用wx.request请求豆瓣API地址，出现403错误。</h2><p>在网上查了一圈之后发现是豆瓣禁止了小程序的请求。具体解决办法是通过自己的服务器代理请求,并修改请求头的Referer和User-Agent信息。具体方法为<a href="https://www.jianshu.com/p/75e4ffc2245a" target="_blank" rel="noopener">小程序请求豆瓣API报403解决方法</a>。</p>
+<h2 id="5-暂时就这些"><a href="#5-暂时就这些" class="headerlink" title="5.暂时就这些.."></a>5.暂时就这些..</h2><p>后续遇到问题我会继续更新…</p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+			
+			
+		
+	
+		
+	
+		
+	
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2018 Gang Feng
+  
+      with help from <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.    
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+</body>
+</html>

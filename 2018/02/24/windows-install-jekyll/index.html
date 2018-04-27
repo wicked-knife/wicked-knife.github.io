@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>windows下安装jekyll | Hexo</title>
+  <meta name="author" content="Gang Feng">
+  
+  <meta name="description" content="记录一下我在windows下安装jekyll所踩的各种坑。
+
+写在前面：
+其实这篇博客算是我的第一篇博客。在昨天折腾了一天之后终于把这个小小的博客给搭了起来，其中大部分时间都是踩坑。。。现在网上基于githubpages + jekyll 搭建博客的教程数不胜数，我在这里也不再赘述，大家自行搜索即可">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="windows下安装jekyll"/>
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+    <meta property="og:image" content="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1519468697477&amp;di=d0bf0250ee3400dd540fefca60a9d76d&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D2701852827%2C3566260664%26fm%3D214%26gp%3D0.jpg" />
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">Hexo</a><span class="split"></span><span class="title">windows下安装jekyll</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2018-02-24</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <blockquote>
+<p>记录一下我在windows下安装jekyll所踩的各种坑。</p>
+</blockquote>
+<p>写在前面：</p>
+<p>其实这篇博客算是我的第一篇博客。在昨天折腾了一天之后终于把这个小小的博客给搭了起来，其中大部分时间都是踩坑。。。现在网上基于githubpages + jekyll 搭建博客的教程数不胜数，我在这里也不再赘述，大家自行搜索即可。我在这里主要说下在windows系统下安装jekyll的各种坑。</p>
+<h2 id="0-你需要知道的"><a href="#0-你需要知道的" class="headerlink" title="0.你需要知道的"></a>0.你需要知道的</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvhrxyo1j20ju03f0ti.jpg" alt=""></p>
+<h3 id="图片来自-jekyll中文网"><a href="#图片来自-jekyll中文网" class="headerlink" title="图片来自 jekyll中文网"></a>图片来自 <a href="https://www.jekyll.com.cn/docs/installation/" target="_blank" rel="noopener">jekyll中文网</a></h3><p>首先你需要知道jekyll官方并不支持你在windows下安装jekyll,所以这可能就是在windows下安装jekyll有这么多坑的关系吧…所以能不用windows还是尽量别用windows吧..</p>
+<h2 id="1-安装ruby"><a href="#1-安装ruby" class="headerlink" title="1.安装ruby"></a>1.安装ruby</h2><h3 id="ruby下载地址"><a href="#ruby下载地址" class="headerlink" title="ruby下载地址"></a><a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">ruby下载地址</a></h3><p>先安装ruby,别以为安装ruby无脑下一步就行了…要仔细看看版本,我就是吃了这个亏。直接下载<a href="https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.6.exe" target="_blank" rel="noopener">ruby 2.2.6 32位</a>。</p>
+<p>你可能会问：我的windows是X64的为什么不安装X64的ruby？我只能告诉你会出问题，截图我也忘了留。。。我开始就是踩了这个坑，直到在stackoverflow上找到一个答案说装X86的试试，然后问题果然就解决了。。。至于问题的具体原因不明，有知道的大神还请告诉我一下。<br>你可能又会问为什么偏偏安装ruby 2.2.6而不是其他版本。这个问题我会在稍后回答你。</p>
+<h2 id="2-安装DEVELOPMENT-KIT"><a href="#2-安装DEVELOPMENT-KIT" class="headerlink" title="2.安装DEVELOPMENT KIT"></a>2.安装DEVELOPMENT KIT</h2><h3 id="DEVELOPMENT-KIT-32bits下载地址"><a href="#DEVELOPMENT-KIT-32bits下载地址" class="headerlink" title="DEVELOPMENT KIT 32bits下载地址"></a><a href="https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe" target="_blank" rel="noopener">DEVELOPMENT KIT 32bits下载地址</a></h3><p>安装DEVELOPMENT KIT,因为jekyll的安装有一些依赖关系,为了让它功能完整,我们需要安装ruby的开发工具。<br>安装时你或许也留意到了<img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvlne753j20ad01xt8m.jpg" alt=""><br>对,它仅仅支持ruby2.0 到 ruby 2.3。至于为什么不能安装ruby 2.2.6以下的版本,那是因为后面安装jekyll时jekyll的某个依赖需要ruby2.2.5以上的支持(同样忘了截图),那么你的选择就只有ruby 2.2.6了…尼玛是不是好多坑啊!!!</p>
+<p>至于为什么也安装32位的那是因为要和安装的ruby保持一致。下载好之后直接将文件解压即可,注意文件路径不要包含英文、空格。我建议你直接解压到C盘根目录下。比如这样<code class="language-css">C:\RubyDevKit\</code></p>
+<p>然后使用命令行工具进入之前的目录<code class="language-css">cd C:\RubyDevKit\</code></p>
+<p>输入<code class="language-css">ruby dk.rb init</code>来自动检测ruby的安装,并将其添加到配置文件中去。完成这一步之后在当前目录下找到config.yml文件,打开它。看看它是不是和我的一样。<br><img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvikvexqj20lc0emmyh.jpg" alt=""><br>其实主要就是看看配置文件有没有最后一行,如果系统没有为你自动添加上去,那么就只有你自己手动将ruby路径添加上去了。注意: - 后 有一个空格。</p>
+<p>接着输入<code class="language-css">ruby dk.rb install</code>来将DevKit与你所安装的ruby绑定。</p>
+<h2 id="3-安装jekyll"><a href="#3-安装jekyll" class="headerlink" title="3.安装jekyll"></a>3.安装jekyll</h2><p>哇,终于到安装jekyll了,是不是很激动。试着在命令行工具里输入<code class="language-css">gem install jekyll</code><br>如果成功了…emmmm算你运气好(不过应该不会成功…)<br>假如你遇到这个错误了</p>
+<pre>
+<code class="language-css">   
+ERROR: Could not find a valid gem ‘jekyll’ (>= 0), here is why: 
+Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: 
+ certificate verify failed (https://api.rubygems.org/latest_spece.4.8.gz)
+</code>
+</pre>
+莫慌,这个错误的原因是因为```证书```问题，简单的解决办法为：下载最新的证书，放到指定文件夹，并配置环境变量。  
+
+
+[下载地址](http://curl.haxx.se/ca/cacert.pem)
+
+拷贝到ruby的bin目录下,环境变量进行如下配置:![](https://ws1.sinaimg.cn/large/e3507465gy1fouvkf94hbj20bh05at8m.jpg)
+
+继续安装,假如你又遇到了这个错误
+
+<pre>
+<code class="language-css">   
+Dependency Error: Yikes! It looks like you don’t have jekyll-paginate or one of its dependencies installed. In order to use 
+Jekyll as currently configured, you’ll need to install this gem. The full error message from Ruby is: ‘cannot load such file
+ – jekyll-paginate’ If you run into trouble, you can find helpful resources at Getting Helpjekyll 3.1.2 | Error: jekyll-paginate
+</code>
+</pre>
+
+<p>直接输入<code class="language-css">gem install jekyll-paginate</code></p>
+<p>最后再再次输入<code class="language-css">gem install jekyll</code><br>这回应该就是没毛病了。如果你遇到了其他问题请联系我，我们一起解决。</p>
+<h2 id="4-安装rouge"><a href="#4-安装rouge" class="headerlink" title="4.安装rouge"></a>4.安装rouge</h2><p>在命令行输入<code class="language-css">gem install rouge</code><br>然后在<code class="language-css">_config.yml</code>配置文件中配置<br><code class="language-css">highlighter: rouge</code>语法高亮。</p>
+<h2 id="5-结束"><a href="#5-结束" class="headerlink" title="5.结束"></a>5.结束</h2><p>最后看到<img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvl0ayf6j20it0haq3k.jpg" alt="">这样的话,就代表jekyll安装成功了!</p>
+<p>至此,jekyll在windows下的安装就完成了。希望这篇文章能帮助苦恼的你。</p>
+<p>参考链接：</p>
+<ul>
+<li><p><a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="noopener">http://jekyll-windows.juthilo.com/</a>  </p>
+</li>
+<li><p><a href="http://blog.csdn.net/wyc12306/article/details/51504885" target="_blank" rel="noopener">http://blog.csdn.net/wyc12306/article/details/51504885</a>  </p>
+</li>
+<li><p><a href="http://blog.csdn.net/qiujuer/article/details/44620019" target="_blank" rel="noopener">http://blog.csdn.net/qiujuer/article/details/44620019</a></p>
+</li>
+</ul>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+	
+		
+	
+		
+			
+		
+	
+		
+	
+		
+			
+		
+	
+		
+			
+			
+		
+	
+	
+	
+		<li class="prev"><a href="/2018/02/25/ES6-useful/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next disabled"><a>next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2018 Gang Feng
+  
+      with help from <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-wixo/">Wixo</a>.    
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+</body>
+</html>
