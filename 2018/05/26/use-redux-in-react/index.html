@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>在react项目中使用redux | 冯罡的博客</title>
+  <meta name="author" content="Gang Feng">
+  
+  <meta name="description" content="记录下我在react项目中使用redux的经验。
+
+0.使用create-react-app创建react项目1、全局安装create-react-appnpm install create-react-app -g 
+2、创建一个项目create-react-app 项目名称
+3、启动项目npm ">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="在react项目中使用redux"/>
+  <meta property="og:site_name" content="冯罡的博客"/>
+
+  
+    <meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1frp3ddxiwtj20sg08mjrj.jpg" />
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
+  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+</head>
+
+<body id="body" data-spy="scroll" data-target=".toc">
+  <div class="container" id="container">
+	<div class="content">
+	  <div class="page-header">		
+  <h1><a class="brand" href="/">冯罡的博客</a><span class="split"></span><span class="title">在react项目中使用redux</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2018-05-26</span></h1>
+</div>		
+
+<div class="row page">
+  <!-- cols -->	
+  
+  
+
+  
+	<div class="col-md-12">
+	  
+
+	  <!-- content -->
+	  <blockquote>
+<p>记录下我在react项目中使用redux的经验。</p>
+</blockquote>
+<h2 id="0-使用create-react-app创建react项目"><a href="#0-使用create-react-app创建react项目" class="headerlink" title="0.使用create-react-app创建react项目"></a>0.使用create-react-app创建react项目</h2><p>1、全局安装create-react-app<br><code>npm install create-react-app -g </code></p>
+<p>2、创建一个项目<br><code>create-react-app 项目名称</code></p>
+<p>3、启动项目<br><code>npm run start</code></p>
+<h2 id="1-安装redux-react-redux"><a href="#1-安装redux-react-redux" class="headerlink" title="1.安装redux, react-redux"></a>1.安装redux, react-redux</h2><p><code>npm install –save redux react-redux</code></p>
+<h2 id="2-定义action"><a href="#2-定义action" class="headerlink" title="2.定义action"></a>2.定义action</h2><p>什么是action?可以这样理解，它就是一个修改state（状态）的’动作’,从本质上来说就是一个普通的JavaScript对象。<br>比如这样：</p>
+<pre><code>
+    {
+        type: 'SELECT_COUNTRY',
+        country: 'cn'
+    }
+</code></pre>
+这样就定义了一个选择国家的action,其中type属性是必须的，用于区分action的种类。country属性则用来代表这个action（动作）所选择的国家。这里我们把它写死了。但是通常情况下我们会通过一个函数来生成action，比如说这样。
+<pre><code>
+function CHANGE_COUNTRY (country) {
+    return {
+        type: 'CHANGE_COUNTRY',
+        country
+    }
+}
+</code></pre>
+这样就可以动态生成我们想要的action了。
+
+## 3.定义reducer
+
+什么是reducer?可以这样理解，它就是一个根据action（动作）作出相应反应的（减速器？还原剂？whatever）。它是通过action的type字段来识别不同类型的action的。
+比如说我们根据上面选择国家的action来定义一个相应的reducer：
+<pre><code>
+function change_country_reducer(state = 'cn', action) {
+    switch(action.type) {
+        case 'CHANGE_COUNTRY':
+            return action.country
+        default:
+            return state
+    }
+}
+</code></pre>
+它很简单，根据action的type属性进行匹配，当匹配到`'CHANGE_COUNTRY'`时便会返回这个action所携带的country信息。
+在没有任何操作情况下，我们返回初始的state。
+
+## Store
+
+Store是redux用来管理state的唯一对象。
+它主要有3个方法：
+- store.getState()：获取state，如上，经过reducer已经返回了一个新的state，那么就可以用这个方法获取。
+- store.dispatch(action)：发出操作，更新state。
+- store.subscribe(listener)：监听变化，当state发生更新时，就可以在这个函数的回调中监听。
+<pre><code>
+    import {createStore} from 'redux'
+    var store = createStore(reducer)
+</code></pre>
+
+<h2 id="在react根组件中挂载Provider"><a href="#在react根组件中挂载Provider" class="headerlink" title="在react根组件中挂载Provider"></a>在react根组件中挂载Provider</h2><p>主要是通过官方的react-redux库来实现。直接上代码吧，<br>在根组件app.js中:</p>
+<pre><code>
+    import { Provider } from 'react-redux' 
+    import { createStore } from 'redux'
+
+    /* 引入Provider,Provider就是把我们用rudux创建的store传递到内部的其他组件。让内部组件可以享有这个store并提供对state的更新。*/
+
+    var store = createStore(reducer)  // 创建store，reducer就是我们之前写的reducer
+
+    /*
+    在render函数中return的内容全部用<provider>组件包裹起来，就像这样。
+    */
+    render() {
+        return (
+        <provider store="{store}">
+            <div classname="app">
+                // some components
+            </div>
+        </provider>
+        );
+    }
+</provider></code></pre>
+这样一来Provier就可以将rudux创建的store传递到内部的其他组件。让内部组件可以享有这个store并提供对state更新的方法。
+
+## 关联智能组件（container?）
+这个时候其实app内部的木偶组件（dumb?）是没有办法获取store中的state来显示内容的，同样地，用户也没办法通过点击等操作来修改state。也就是说现在store和app内部的组件并无关联。
+
+要想产生关联，就要用到`'react-redux'`中的connnet，connect可以接受四个参数，一般用到的是两个，这里就只说这两个：
+- mapStateToProps： 顾名思义，就是把state（状态）绑定到组件的属性当中。我们定义的state对象有哪些属性，在我们组件的props都可以获取。
+- mapDispatchToProps: 顾名思义, 就是触发更改state的操作，即store.dispatch(reducer)。同样地，在UI组件需要修改state时，比如说用户选择时，我们就可以在回调中直接从props中调用定义好的dispatch即可。
+
+完整代码如下：
+<pre><code>
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        selectCountry:(country) => {
+            dispatch(CHANGE_COUNTRY(country))
+        }
+    }
+}
+// 直接返回一个对象，其中CHANGE_COUNTRY我们之前写的reducer，country就是用户选择时选择的国家。这样一来我们在用户选择国家时的事件回调函数中绑定{this.props.selectCountry}即可更新state。
+
+const mapStateToProps = (state, ownProps) => {
+    return state
+}
+// 获取state很简单，直接返回即可。
+
+export connect(mapStateToProps, mapDispatchToProps)(AppHeader)
+
+// 用connect将UI组件与我们定义的规则连接起来。
+</code></pre>
+AppHeader中的代码如下：
+<pre><code>
+// 主要用了ant design的Select组件， 代码简化后的：
+                <select 200="" showsearch="" placeholder="请选择地域" style="{{" width:="" }}="" classname="area-select" defaultvalue="{this.props.country}" optionfilterprop="children" 选择器默认值就是我们之前定义reducer时给定的默认值`'cn'`,这里直接通过`this.props.country`就能获取到。="" onselect="{this.props.selectCountry}">
+
+                    // 选择时的事件处理函数就是在mapDispatchToProps中定义的selectCountry方法。这里我们也可以直接通过`this.props.selectCountry`获取到并进行调用，从而修改state.
+
+                    {countryList.map((area, index) => {
+                        return (
+                            <select.option key="{area.key}" value="{area.key}">{area.name}</select.option>
+                        )
+                    })}
+                </select>
+</code></pre>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文作者水平有限，只是简单介绍了一下在react项目中使用redux的方法。关于更多的高级功能：如middleware等知识，请参考<a href="https://link.jianshu.com/?t=https://github.com/reactjs/react-redux" target="_blank" rel="noopener">这里</a></p>
+	  
+
+	  <div>
+  		<center>
+		  <div class="pagination">
+<ul class="pagination">
+	
+	
+	
+	
+	
+	
+		
+			
+			
+		
+	
+		
+	
+		
+			
+			
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	
+	
+		<li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
+	
+	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
+	
+		<li class="next"><a href="/2018/03/30/mpvue/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
+	
+</ul>
+</div>
+
+		</center>
+	  </div>
+	  
+	</div> <!-- col-md-9/col-md-12 -->
+	
+  </div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+	<footer> <p>
+  &copy; 2018 Gang Feng
+  
+</p> </footer>
+  </div> <!-- container-narrow -->
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.tableofcontents.min.js"></script>
+<script src="/js/tocgenerator.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+</body>
+</html>
