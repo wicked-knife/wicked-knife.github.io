@@ -1,217 +1,830 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
+
+  
   <title>冯罡的博客</title>
-  <meta name="author" content="Gang Feng">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+  <meta property="og:type" content="website">
+<meta property="og:title" content="冯罡的博客">
+<meta property="og:url" content="https://ghostratel.github.io/index.html">
+<meta property="og:site_name" content="冯罡的博客">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="冯罡的博客">
   
-  <meta property="og:site_name" content="冯罡的博客"/>
-
-  
-    <meta property="og:image" content=""/>
-  
-
-  
-    <link rel="alternative" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
-  
-  
-    <link href="/favicon.png" rel="icon">
+    <link rel="alternate" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
   
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
-  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
+    <link rel="icon" href="/favicon.png">
   
-
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body id="body" data-spy="scroll" data-target=".toc">
-  <div class="container" id="container">
-	<div class="content">
-	  <div class="page-header">
-  <h1><a class="brand" href="#">冯罡的博客</a></h1>
-</div>
-
-
-
-<div class="row page">
-	<div class="col-md-12">
-        <input type="text" id="local-search-input" name="q" results="0" placeholder="查找笔记……" class="st-search-input st-default-search-input form-control" style="margin-bottom:1em"/>
-        <div id="local-search-result"></div>
-		<div class="panel-group" id="notebook">
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#其他">
-						<i class="fa fa-folder"></i> 其他		  
-				</div>
-				
-					<div id="其他" class="panel-collapse collapse in">
-				
-						<div class="panel-body">
-							<ul class="post">                                
-								
-								    
-								
-								    
-								
-								    
-								
-								    
-								
-								    
-								        <li class="post-list-item"><a href="/2018/04/04/change-job/">我的转职之路</a></li>
-								    
-								
-								    
-								
-							</ul>
-						</div>
-					</div>
-			</div>
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#技术">
-						<i class="fa fa-folder"></i> 技术		  
-				</div>
-				
-					<div id="技术" class="panel-collapse collapse in">
-				
-						<div class="panel-body">
-							<ul class="post">                                
-								
-								    
-								        <li class="post-list-item"><a href="/2018/02/24/windows-install-jekyll/">windows下安装jekyll</a></li>
-								    
-								
-								    
-								        <li class="post-list-item"><a href="/2018/02/25/ES6-useful/">ES6中最实用的特性</a></li>
-								    
-								
-								    
-								
-								    
-								        <li class="post-list-item"><a href="/2018/03/30/mpvue/">mpvue 中的一些注意事项(不定期更新)</a></li>
-								    
-								
-								    
-								
-								    
-								        <li class="post-list-item"><a href="/2018/05/26/use-redux-in-react/">在react项目中使用redux</a></li>
-								    
-								
-							</ul>
-						</div>
-					</div>
-			</div>
-			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<a class="panel-title" data-toggle="collapse" data-parent="#notebook" href="#技术,微信小程序">
-						<i class="fa fa-folder"></i> 技术,微信小程序		  
-				</div>
-				
-					<div id="技术,微信小程序" class="panel-collapse collapse in">
-				
-						<div class="panel-body">
-							<ul class="post">                                
-								
-								    
-								
-								    
-								
-								    
-								        <li class="post-list-item"><a href="/2018/03/05/weixinapp/">记录下写微信小程序所踩的坑</a></li>
-								    
-								
-								    
-								
-								    
-								
-								    
-								
-							</ul>
-						</div>
-					</div>
-			</div>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		</div><!-- accordion -->
-	</div>
-</div>
-
-	</div>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">冯罡的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ghostratel.github.io"></form>
+      </div>
+    </div>
   </div>
-  <div class="container-narrow">
-	<footer> <p>
-  &copy; 2018 Gang Feng
+</header>
+      <div class="outer">
+        <section id="main">
   
-</p> </footer>
-  </div> <!-- container-narrow -->
-  
-<a id="gotop" href="#">   
-  <span>▲</span> 
+    <article id="post-use-redux-in-react" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/26/use-redux-in-react/" class="article-date">
+  <time datetime="2018-05-25T16:00:00.000Z" itemprop="datePublished">2018-05-26</time>
 </a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
 
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.tableofcontents.min.js"></script>
-<script src="/js/tocgenerator.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/26/use-redux-in-react/">在react项目中使用redux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>记录下我在react项目中使用redux的经验。</p>
+</blockquote>
+<h2 id="0-使用create-react-app创建react项目"><a href="#0-使用create-react-app创建react项目" class="headerlink" title="0.使用create-react-app创建react项目"></a>0.使用create-react-app创建react项目</h2><p>1、全局安装create-react-app<br><code>npm install create-react-app -g </code></p>
+<p>2、创建一个项目<br><code>create-react-app 项目名称</code></p>
+<p>3、启动项目<br><code>npm run start</code></p>
+<h2 id="1-安装redux-react-redux"><a href="#1-安装redux-react-redux" class="headerlink" title="1.安装redux, react-redux"></a>1.安装redux, react-redux</h2><p><code>npm install –save redux react-redux</code></p>
+<h2 id="2-定义action"><a href="#2-定义action" class="headerlink" title="2.定义action"></a>2.定义action</h2><p>什么是action?可以这样理解，它就是一个修改state（状态）的’动作’,从本质上来说就是一个普通的JavaScript对象。<br>比如这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">'SELECT_COUNTRY'</span>,</span><br><span class="line">    country: <span class="string">'cn'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就定义了一个选择国家的action,其中type属性是必须的，用于区分action的种类。country属性则用来代表这个action（动作）所选择的国家。这里我们把它写死了。但是通常情况下我们会通过一个函数来生成action，比如说这样。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CHANGE_COUNTRY</span> (<span class="params">country</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        type: <span class="string">'CHANGE_COUNTRY'</span>,</span><br><span class="line">        country</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以动态生成我们想要的action了。</p>
+<h2 id="3-定义reducer"><a href="#3-定义reducer" class="headerlink" title="3.定义reducer"></a>3.定义reducer</h2><p>什么是reducer?可以这样理解，它就是一个根据action（动作）作出相应反应的（减速器？还原剂？whatever）。它是通过action的type字段来识别不同类型的action的。<br>比如说我们根据上面选择国家的action来定义一个相应的reducer：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">change_country_reducer</span>(<span class="params">state = <span class="string">'cn'</span>, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'CHANGE_COUNTRY'</span>:</span><br><span class="line">            <span class="keyword">return</span> action.country</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>它很简单，根据action的type属性进行匹配，当匹配到<code>&#39;CHANGE_COUNTRY&#39;</code>时便会返回这个action所携带的country信息。<br>在没有任何操作情况下，我们返回初始的state。</p>
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><p>Store是redux用来管理state的唯一对象。</p>
+<p>它主要有3个方法：</p>
+<ol>
+<li><p>store.getState()：获取state，如上，经过reducer已经返回了一个新的state，那么就可以用这个方法获取。</p>
+</li>
+<li><p>store.dispatch(action)：发出操作，更新state。</p>
+</li>
+<li><p>store.subscribe(listener)：监听变化，当state发生更新时，就可以在这个函数的回调中监听。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore&#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">var</span> store = createStore(reducer)</span><br></pre></td></tr></table></figure>
+<h2 id="在react根组件中挂载Provider"><a href="#在react根组件中挂载Provider" class="headerlink" title="在react根组件中挂载Provider"></a>在react根组件中挂载Provider</h2><p>主要是通过官方的react-redux库来实现。直接上代码吧，在根组件app.js中:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span> </span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 引入Provider,Provider就是把我们用rudux创建的store传递到内部的其他组件。让内部组件可以享有这个store并提供对state的更新。*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> store = createStore(reducer)  <span class="comment">// 创建store，reducer就是我们之前写的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在render函数中return的内容全部用&lt;Provider&gt;组件包裹起来，就像这样。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">        &lt;div className=<span class="string">"app"</span>&gt;</span><br><span class="line">            <span class="comment">// some components</span></span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Provider&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样一来Provier就可以将rudux创建的store传递到内部的其他组件。让内部组件可以享有这个store并提供对state更新的方法。</p>
+<h2 id="关联智能组件（container-）"><a href="#关联智能组件（container-）" class="headerlink" title="关联智能组件（container?）"></a>关联智能组件（container?）</h2><p>这个时候其实app内部的木偶组件（dumb?）是没有办法获取store中的state来显示内容的，同样地，用户也没办法通过点击等操作来修改state。也就是说现在store和app内部的组件并无关联。</p>
+<p>要想产生关联，就要用到<code>&#39;react-redux&#39;</code>中的connnet，connect可以接受四个参数，一般用到的是两个，这里就只说这两个:</p>
+<ol>
+<li><p>mapStateToProps： 顾名思义，就是把state（状态）绑定到组件的属性当中。我们定义的state对象有哪些属性，在我们组件的props都可以获取。</p>
+</li>
+<li><p>mapDispatchToProps: 顾名思义, 就是触发更改state的操作，即store.dispatch(reducer)。同样地，在UI组件需要修改state时，比如说用户选择时，我们就可以在回调中直接从props中调用定义好的dispatch即可。</p>
+</li>
+</ol>
+<p>完整代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch, ownProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        selectCountry:<span class="function">(<span class="params">country</span>) =&gt;</span> &#123;</span><br><span class="line">            dispatch(CHANGE_COUNTRY(country))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 直接返回一个对象，其中CHANGE_COUNTRY我们之前写的reducer，country就是用户选择时选择的国家。这样一来我们在用户选择国家时的事件回调函数中绑定&#123;this.props.selectCountry&#125;即可更新state。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, ownProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> state</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取state很简单，直接返回即可。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> connect(mapStateToProps, mapDispatchToProps)(AppHeader)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用connect将UI组件与我们定义的规则连接起来。</span></span><br></pre></td></tr></table></figure></p>
+<p>AppHeader中的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主要用了ant design的Select组件， 代码简化后的：</span></span><br><span class="line">                &lt;Select showSearch placeholder=<span class="string">'请选择地域'</span> style=&#123;&#123; <span class="attr">width</span>: <span class="number">200</span> &#125;&#125; className=<span class="string">'area-select'</span> defaultValue=&#123;<span class="keyword">this</span>.props.country&#125; optionFilterProp=<span class="string">"children"</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 选择器默认值就是我们之前定义reducer时给定的默认值`'cn'`,这里直接通过`this.props.country`就能获取到。</span></span><br><span class="line"></span><br><span class="line">                    onSelect=&#123;<span class="keyword">this</span>.props.selectCountry&#125;&gt;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 选择时的事件处理函数就是在mapDispatchToProps中定义的selectCountry方法。这里我们也可以直接通过`this.props.selectCountry`获取到并进行调用，从而修改state.</span></span><br><span class="line">    </span><br><span class="line">                    &#123;countryList.map(<span class="function">(<span class="params">area, index</span>) =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> (</span><br><span class="line">                            &lt;Select.Option key=&#123;area.key&#125; value=&#123;area.key&#125; &gt;&#123;area.name&#125;&lt;<span class="regexp">/Select.Option&gt;</span></span><br><span class="line"><span class="regexp">                        )</span></span><br><span class="line"><span class="regexp">                    &#125;)&#125;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>Select&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文作者水平有限，只是简单介绍了一下在react项目中使用redux的方法。关于更多的高级功能：如middleware等知识，请参考<a href="https://link.jianshu.com/?t=https://github.com/reactjs/react-redux" target="_blank" rel="noopener">这里</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/05/26/use-redux-in-react/" data-id="cjhozerst000op0vhnd6q9nx6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-redux/">react, redux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-change-job" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/04/change-job/" class="article-date">
+  <time datetime="2018-04-03T16:00:00.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/其他/">其他</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/change-job/">我的转职之路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>转职之路。</p>
+</blockquote>
+<h2 id="0-我为什么要’转职’"><a href="#0-我为什么要’转职’" class="headerlink" title="0.我为什么要’转职’"></a>0.我为什么要’转职’</h2><p>首先说说我所理解的<code>转职</code>。就拿游戏里来说，如果一个游戏账号练废了，又没有时间重头再来，那最好的办法就是<code>转职</code>。</p>
+<p>我转职的原因或者说我辞职的原因很简单，就是像马云说的那样，钱没给够、干得还不爽。</p>
+<p>在老东家工作的时候整个人处于一种极端负能量的状态，每天总有处理不完的事情，总有受不完的气，总没有属于自己的一点点时间，于是只能每天向女朋友倾倒这些负能量，终于有一天女朋友也向我发了火，我不该天天向她投去如此多的负面情绪。。。</p>
+<p>于是我开始认真思考我的未来。老东家是国内保险行业的巨头，而自己坐拥旁人羡煞不已的一份职位。说实话辞去这份工作重头再来真的需要很大的勇气。公司里的同事各个年龄段的都有，每天看见他们，我仿佛看见了我的以后，每天也是这样勤勤恳恳地工作着，他们的现在就是我的以后。那一刻，我内心辞职的念头如野火燎原般增长，果断向HR递交了辞呈。</p>
+<h2 id="1-辞职后的迷茫"><a href="#1-辞职后的迷茫" class="headerlink" title="1.辞职后的迷茫"></a>1.辞职后的迷茫</h2><p>辞职后最迷茫的就是：不知道自己今后该干嘛。</p>
+<p>大学本科学的专业是汽车服务工程，先说说自己，大学时不务正业，专业知识啥也没学到；再说说专业，高大上一点的有车辆工程专业，务实一点的有汽车检测与维修技术等专业，自己学的这个专业高不成低不就，找工作十分尴尬。</p>
+<p>然而最重要的还是，自己真的不喜欢这个专业的相关工作，即使运气好谋得了一份好差事，保不齐又会抑制不住内心的冲动辞职走人。<br>最后我选择了遵从自己的内心，我一直觉得程序员这个群体很神秘且牛逼，一直很好奇他们工作内容，那么不如就向着这个目标努力。</p>
+<h2 id="2-转职受阻"><a href="#2-转职受阻" class="headerlink" title="2.转职受阻"></a>2.转职受阻</h2><p>既然确定了目标，就得好好在网上查查自己得学什么。结果搜索出来的一大堆英文词汇瞬间让自己打了退堂鼓，可是仔细想想，以我现在的状态已经没有了退路，没有退路，才有出路。于是我从网上找了最火的JAVA学习视频，硬着头皮开始了自己的自学之路。</p>
+<p>在每天八小时的学习强度学习了半个月之后我很不争气地选择了放弃，太难了，真的，对我这种小白来说，JAVA太难了。</p>
+<p>在机缘巧合之下，我了解到了github上最火的开源项目<code>freeCodeCamp</code>,在上面做了几道题之后，仿佛上了瘾，不知不觉中自己竟然完成了一个小小的静态页面，这给我的成就感是巨大的，再后来我才知道做这个工作的程序员叫<code>前端工程师</code>。于是自己下定决心在前端这条路上一直走下去。</p>
+<h2 id="3-学习之路"><a href="#3-学习之路" class="headerlink" title="3.学习之路"></a>3.学习之路</h2><p>相比后端，前端学习过程中我最直观的体验就是：<code>所见即所得</code>，写出来的代码立马就会在浏览器中展示出效果，因为没有过于复杂的逻辑，所以即使自己是初学者也能马上写出一些像模像样的页面，这给我自己的成就感是巨大的。而我自学前端到现在，也正是学习过程中这一点一点的成就感激励我不断前进。</p>
+<p>再说说学习心态，最重要的就是戒骄戒躁。比如：扫了一眼看到一篇文章很长，代码很多，然后自己看不懂，于是立马关掉了。这就是心态太浮躁了，什么也学不会，学习过程中一定要摒弃这种心态，虚心，耐心，<code>慢慢来往往比较快</code>。</p>
+<h2 id="4-求职之路"><a href="#4-求职之路" class="headerlink" title="4.求职之路"></a>4.求职之路</h2><p>相比其他科班出身的求职者，我这种半路出家前端就有天然劣势，谁叫我大学学的不是计算机相关专业呢。所以一开始求职的时候，我的心态也摆的很正，别的公司不要我很正常，没有公司会冒着这么大的风险招一个无相关工作经验，非相关专业毕业的求职者，除非你特别牛逼。</p>
+<p>于是我只求一个面试机会就很满足了。在长沙找工作的时候几乎把所有招聘软件上所有的前端职位都投递了，收到的面试邀请果不其然寥寥无几。不得不说，这很让人沮丧。</p>
+<p>在每一场面试前我都会很精心地准备，刷面试题，刷面经，提前研究下面试公司的官网，根据招聘职位要求思考面试官可能会问什么问题，在我的精心准备之下，我自认为每一场面试都发挥地还算不错，面试官对我的评价也挺高，技术上也很聊得来，可是他们都以我工作经验不足的理由将我婉拒了。不得不说，这更加让人沮丧。</p>
+<p>就在我差不多把长沙大部分前端岗位都投递完简历还没有找到工作的时候，我产生了放弃的念头。我想，可能长沙不适合我，我也许要去北上广深碰碰运气。就在这个时候，我意料之外地又接到了一个电话邀请面试，于是马上收拾心情，赶往公司面试。面试时同样自认为表现不错，说好的第二天会有电话通知结果。结果到了第二天下午三点还是没有消息，心想自己肯定是凉了，心情无比沮丧。</p>
+<p>可是，皇天不负有心人，最后这家公司当天下午给我来了电话，邀请我第二天入职。当时我的心情真是激动到无以复加，还反复向HR确认了多次。挂了电话后还激动地向家人、女朋友报喜。</p>
+<h2 id="5-感谢"><a href="#5-感谢" class="headerlink" title="5.感谢"></a>5.感谢</h2><p>从一个纯小白自学六个月，到现在找到一份初级前端工程师的工作。</p>
+<p>首先要感谢的是我爸妈和我女朋友。</p>
+<p>辞职前女朋友天天听我倒苦水，自学时遇到困难女朋友一直激励鼓舞夸奖我，找工作碰壁女朋友也一直给我加油打气，没有她我可能早就半途而废了。</p>
+<p>在家自学的时候爸妈也是给予了我无微不至的照顾。尽管他们开始很反对我辞职，但是当我真的辞职了在家自学的时候他们也在家默默地支持我，不然我干一点家务，完完全全地照顾我的饮食起居，只是为了让我能够专心致志地学习。（当然咯，我肯定还是会主动干家务的）大恩不言谢，我唯有以后以实际行动报答孝顺他们。</p>
+<p>最后要感谢的就是现东家。先不说现东家给我提供了这个工作机会，这更是对我半年自学成果的肯定。</p>
+<h2 id="6-感悟"><a href="#6-感悟" class="headerlink" title="6.感悟"></a>6.感悟</h2><p>这里总结一下我从裸辞到转职成功的各种心得经验。</p>
+<p>对于生活态度：遵从自己的内心，做自己喜欢的事情。因为真的当你这样做了之后，你会发现你在工作时你并不觉得你在工作，而是在做你喜欢的事情。或者这么说，做自己喜欢的事情的时候顺便赚点钱。</p>
+<p>对于学习:虚心学习，戒骄戒躁，慢慢来。</p>
+<p>对于找工作面试：面试前做好充足准备，提前思考面试官会提的问题。面试完后认真复盘整个面试，总结经验及不足。</p>
+<p>最后，多花时间在你在意的人身上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/04/04/change-job/" data-id="cjhozerse0005p0vhwb7ikha9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mpvue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/30/mpvue/" class="article-date">
+  <time datetime="2018-03-29T16:00:00.000Z" itemprop="datePublished">2018-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/30/mpvue/">mpvue 中的一些注意事项(不定期更新)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>记录下我使用mpvue所遇到的问题。</p>
+</blockquote>
+<h2 id="0-使用mpvue"><a href="#0-使用mpvue" class="headerlink" title="0.使用mpvue"></a>0.使用mpvue</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fpuxu8woymj20bc03h0so.jpg" alt=""></p>
+<p>需要在<code>main.js</code>中手动挂载vuex到Vue的原型上。</p>
+<h2 id="1-小程序原生组件的事件监听"><a href="#1-小程序原生组件的事件监听" class="headerlink" title="1.小程序原生组件的事件监听"></a>1.小程序原生组件的事件监听</h2><p>事件监听(小程序原生写法):<br><img src="https://ws1.sinaimg.cn/large/e3507465gy1fpuy03x3t9j20l501bjrb.jpg" alt=""></p>
+<p>事件监听(mpvue写法，或者说就是vue写法:<br><img src="https://ws1.sinaimg.cn/large/e3507465gy1fpuy0m2bcmj20lj01c3yf.jpg" alt=""></p>
+<p>直接在method中就可以写事件处理函数了。<br><img src="https://ws1.sinaimg.cn/large/e3507465gy1fpuy14e7mqj20by035jr8.jpg" alt=""></p>
+<h2 id="2-使用promise封装小程序http请求"><a href="#2-使用promise封装小程序http请求" class="headerlink" title="2.使用promise封装小程序http请求"></a>2.使用promise封装小程序http请求</h2><p>直接上代码</p>
+<p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fpuy28xz2ej20e60a1glw.jpg" alt=""></p>
+<h2 id="3-遇到再记录"><a href="#3-遇到再记录" class="headerlink" title="3.遇到再记录"></a>3.遇到再记录</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/03/30/mpvue/" data-id="cjhozersf0006p0vh12pbfpjy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-weixinapp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/05/weixinapp/" class="article-date">
+  <time datetime="2018-03-04T16:00:00.000Z" itemprop="datePublished">2018-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术-微信小程序/">技术,微信小程序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/05/weixinapp/">记录下写微信小程序所踩的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>记录下我自己在写微信小程序时所踩的坑。</p>
+</blockquote>
+<h2 id="1-出现“脚本错误或者未正确调用Page（）”的错误提示。"><a href="#1-出现“脚本错误或者未正确调用Page（）”的错误提示。" class="headerlink" title="1.出现“脚本错误或者未正确调用Page（）”的错误提示。"></a>1.出现“脚本错误或者未正确调用Page（）”的错误提示。</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r1knkyfj20g700twew.jpg" alt=""></p>
+<p>出现这个错误的原因通常是因为对应页面的js文件里，没有调用Page方法。即使js文件里没有任何代码，也需要在js里添加一个空的 Page（{ }）。注意Page的P要大写。</p>
+<h2 id="2-出现“Expecting-‘String，‘Number，‘NULL，‘True…-’”’’的错误提示。"><a href="#2-出现“Expecting-‘String，‘Number，‘NULL，‘True…-’”’’的错误提示。" class="headerlink" title="2.出现“Expecting ‘String，‘Number，‘NULL，‘True….’”’’的错误提示。"></a>2.出现“Expecting ‘String，‘Number，‘NULL，‘True….’”’’的错误提示。</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r54ta87j20gu01fq3u.jpg" alt=""></p>
+<p>出现这个错误的原因在于对应页面的json文件没有加入{ }。即使json文件里没有任何内容，也需要加入一个{ }，作为默认代码。json文件不允许出现注释代码，如果有注释的代码，同样会报这个错误。</p>
+<h2 id="3-在真机预览时，会出现“缺少文件，错误信息：error-iconPath-……-file-not-found-”"><a href="#3-在真机预览时，会出现“缺少文件，错误信息：error-iconPath-……-file-not-found-”" class="headerlink" title="3.在真机预览时，会出现“缺少文件，错误信息：error:iconPath=…….file not found?”"></a>3.在真机预览时，会出现“缺少文件，错误信息：error:iconPath=…….file not found?”</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fp1r6mc3ioj20g302kjr9.jpg" alt=""></p>
+<p>在开发工具中-&gt;项目-&gt;预览时，有时候会报以上错误。错误的原因是因为，app.json的tabBar选项中，list下的iconPath出现了绝对路径 “ / ”，比如</p>
+<p><pre><br><code class="language-javascript"><br>    “list”: [{<br>      “pagePath”: “pages/movies/movies”,<br>      “iconPath”: “/images/tab/dianying.png”,<br>      “selectedIconPath”: “images/tab/dianying_hl.png”,<br>      “text”: “电影”<br>    }, {<br>        “pagePath”: “pages/setting/setting”,<br>        “iconPath”: “/images/tab/set.png”,<br>        “selectedIconPath”: “images/tab/set_hl.png”,<br>        “text”: “设置”<br>      }],<br></code><br></pre><br>iconPath 以 “/”开头(绝对路径)，就会出现以上错误。请使用相对路径。</p>
+<h2 id="4-使用wx-request请求豆瓣API地址，出现403错误。"><a href="#4-使用wx-request请求豆瓣API地址，出现403错误。" class="headerlink" title="4.使用wx.request请求豆瓣API地址，出现403错误。"></a>4.使用wx.request请求豆瓣API地址，出现403错误。</h2><p>在网上查了一圈之后发现是豆瓣禁止了小程序的请求。具体解决办法是通过自己的服务器代理请求,并修改请求头的Referer和User-Agent信息。具体方法为<a href="https://www.jianshu.com/p/75e4ffc2245a" target="_blank" rel="noopener">小程序请求豆瓣API报403解决方法</a>。</p>
+<h2 id="5-暂时就这些"><a href="#5-暂时就这些" class="headerlink" title="5.暂时就这些.."></a>5.暂时就这些..</h2><p>后续遇到问题我会继续更新…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/03/05/weixinapp/" data-id="cjhozersa0001p0vhpgi7b0pp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ES6-useful" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/25/ES6-useful/" class="article-date">
+  <time datetime="2018-02-24T16:00:00.000Z" itemprop="datePublished">2018-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/25/ES6-useful/">ES6中最实用的特性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。</p>
+</blockquote>
+<h2 id="0-目录"><a href="#0-目录" class="headerlink" title="0.目录"></a>0.目录</h2><ul>
+<li>函数参数默认值</li>
+<li>模板字符串</li>
+<li>解构赋值</li>
+<li>对象属性简写</li>
+<li>箭头函数</li>
+<li>Promise</li>
+<li>Let与Const</li>
+<li>类</li>
+<li>模块化</li>
+<li>Set</li>
+</ul>
+<h2 id="1-函数参数默认值"><a href="#1-函数参数默认值" class="headerlink" title="1.函数参数默认值"></a>1.函数参数默认值</h2><h4 id="非ES6"><a href="#非ES6" class="headerlink" title="非ES6:"></a>非ES6:</h4><pre><code>
+function foo(height, color)
+{
+    var height = height || 50
+    var color = color || 'red'
+    //...
+}
+</code></pre>
+这样写一般没什么问题，但是当我们这样调用`foo`函数时：
+<pre><code>
+foo(0)
+</code></pre>
+`0`将进行强制类型转换为`false`,于是`height`就成了50。这显然不是我们所期望的。
+
+#### ES6：
+<pre><code>
+function foo(height = 50, color = 'red')
+{
+    // ...
+}
+</code></pre>
+上面这种情况就能得到很好地解决。
+
+
+## 2.模板字符串
+
+#### 非ES6:
+<pre><code>
+var name = 'Your name is ' + first + ' ' + last + '.'
+</code></pre>
+只能使用`+`来进行字符串的拼接,这样不仅麻烦,而且在拼接的内容较复杂时,可读性会变得非常差,最重要的是非常容易出错!
+
+#### ES6：
+
+<pre><code>
+var name = `Your name is ${first} ${last}.`
+</code></pre>
+变量直接放在`${}`中,代码简洁,直观。
+
+
+## 3.解构赋值
+
+#### 非ES6:
+如获取对象属性值时:
+<pre><code>
+var data = $('body').data()  // data有house和mouse属性
+var house = data.house
+var mouse = data.mouse
+</code></pre>
+
+<h4 id="ES6"><a href="#ES6" class="headerlink" title="ES6:"></a>ES6:</h4><p>获取对象属性值时:</p>
+<pre><code>
+var { house, mouse} = $('body').data()
+</code></pre>
+对于数组:
+<pre><code>
+var [col1, col2]  = $('.column')
+</code></pre>
+
+<h2 id="4-对象属性简写"><a href="#4-对象属性简写" class="headerlink" title="4.对象属性简写"></a>4.对象属性简写</h2><h4 id="非ES6-1"><a href="#非ES6-1" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>当对象的<code>key</code>值和<code>value</code>的引用名称相同时:</p>
+<pre><code>
+var bar = 'bar'
+var foo = function ()
+{
+    // ...
+}
+var baz = {
+  bar: bar,
+  foo: foo
+}
+</code></pre>
+
+<h4 id="ES6-1"><a href="#ES6-1" class="headerlink" title="ES6:"></a>ES6:</h4><p>对象中直接写变量，非常简单：</p>
+<pre><code>
+var bar = 'bar'
+var foo = function ()
+{
+    // ...
+}
+var baz = { bar, foo }
+</code></pre>
+
+<h2 id="5-箭头函数"><a href="#5-箭头函数" class="headerlink" title="5.箭头函数"></a>5.箭头函数</h2><h4 id="非ES6-2"><a href="#非ES6-2" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>普通函数体内的<code>this</code>, 指向调用该函数的对象。</p>
+<pre><code>
+function foo() 
+{
+    console.log(this.id)
+}
+var id = 1
+foo() // 输出1
+foo.call({ id: 2 }) // 输出2
+</code></pre>
+
+<h4 id="ES6-2"><a href="#ES6-2" class="headerlink" title="ES6:"></a>ES6:</h4><p>箭头函数内的<code>this</code>，就是定义该函数时this所指向的对象，而不是调用时所在的对象。</p>
+<pre><code>
+var foo = () => {
+  console.log(this.id)
+}
+var id = 1
+foo() // 输出1
+foo.call({ id: 2 }) // 输出1
+</code></pre>
+
+<h2 id="6-Promise"><a href="#6-Promise" class="headerlink" title="6.Promise"></a>6.Promise</h2><h4 id="非ES6-3"><a href="#非ES6-3" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>嵌套两个setTimeout回调函数：</p>
+<pre><code>
+setTimeout(function()
+{
+    console.log('Hello') // 1秒后输出"Hello"
+    setTimeout(function()
+    {
+        console.log('Fundebug') // 2秒后输出"Fundebug"
+    }, 1000)
+}, 1000)
+</code></pre>
+
+<h4 id="ES6-3"><a href="#ES6-3" class="headerlink" title="ES6:"></a>ES6:</h4><p>使用两个then是异步编程串行化，避免了回调嵌套回调：</p>
+<pre><code>
+var wait1000 = new Promise(function(resolve, reject)
+{
+    setTimeout(resolve, 1000)
+})
+wait1000
+    .then(function()
+    {
+        console.log("Hello") // 1秒后输出"Hello"
+        return wait1000
+    })
+    .then(function()
+    {
+        console.log("Fundebug") // 2秒后输出"Fundebug"
+    })
+</code></pre>
+
+<h2 id="7-Let与Const"><a href="#7-Let与Const" class="headerlink" title="7.Let与Const"></a>7.Let与Const</h2><h4 id="非ES6-4"><a href="#非ES6-4" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>var定义的变量没有块级作用域：</p>
+<pre><code>
+{
+  var a = 10
+}
+console.log(a) // 输出10
+</code></pre>
+
+<h4 id="ES6-4"><a href="#ES6-4" class="headerlink" title="ES6:"></a>ES6:</h4><p>let定义的变量为块级作用域，因此会报错：</p>
+<pre><code>
+{
+  let a = 10
+  const b = 10
+}
+console.log(a) // “ReferenceError: a is not defined”
+console.log(b) // “ReferenceError: b is not defined”
+</code></pre>
+
+<h2 id="8-Class"><a href="#8-Class" class="headerlink" title="8.Class"></a>8.Class</h2><h4 id="非ES6-5"><a href="#非ES6-5" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>使用构造函数创建对象：</p>
+<pre><code>
+function Point(x, y)
+{
+    this.x = x
+    this.y = y
+    this.add = function()
+    {
+        return this.x + this.y
+    }
+}
+var p = new Point(1, 2)
+console.log(p.add()) // 输出3
+</code></pre>
+
+<h4 id="ES6-5"><a href="#ES6-5" class="headerlink" title="ES6:"></a>ES6:</h4><p>使用Class定义类，更加规范，继承实现起来也很方便：</p>
+<pre><code>
+class Point
+{
+    constructor(x, y)
+    {
+        this.x = x
+        this.y = y
+    }
+    add()
+    {
+        return this.x + this.y
+    }
+}
+var p = new Point(1, 2)
+console.log(p.add()) // 输出3
+</code></pre>
+
+<h2 id="9-模块化"><a href="#9-模块化" class="headerlink" title="9.模块化"></a>9.模块化</h2><p>JavaScript一直没有官方的模块化解决方案，开发者在实践中主要采用<code>CommonJS</code>和<code>AMD</code>规范。而ES6制定了模块(<code>Module</code>)功能。</p>
+<h4 id="非ES6-6"><a href="#非ES6-6" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>Node.js采用<code>CommenJS</code>规范实现了模块化，而前端也可以采用，只是在部署时需要使用Browserify等工具打包。这里不妨介绍一下<code>CommenJS</code>规范。<br>module.js中使用module.exports导出port变量和getAccounts函数：</p>
+<pre><code>
+// module.js
+module.exports = {
+  port: 3000,
+  getAccounts: function() {
+    ...
+  }
+}
+</code></pre>
+main.js中使用require导入module.js：
+<pre><code>
+// main.js
+var service = require('module.js')
+console.log(service.port) // 输出3000
+</code></pre>
+
+<h4 id="ES6-6"><a href="#ES6-6" class="headerlink" title="ES6:"></a>ES6:</h4><p>ES6中使用export与import关键字实现模块化。<br>module.js中使用export导出port变量和getAccounts函数：</p>
+<pre><code>
+// module.js
+export var port = 3000
+export function getAccounts(url) {
+  ...
+}
+</code></pre>
+main.js中使用import导入module.js，可以指定需要导入的变量：
+<pre><code>
+// main.js
+import {port, getAccounts} from 'module'
+console.log(port) // 输出3000
+</code></pre>
+也可以将全部变量导入：
+<pre><code>
+// main.js
+import * as service from 'module'
+console.log(service.port) // 3000
+</code></pre>
+
+<h2 id="10-Set"><a href="#10-Set" class="headerlink" title="10.Set"></a>10.Set</h2><p>Set可以用来数组或者类数组的去重,十分方便。</p>
+<h4 id="非ES6-7"><a href="#非ES6-7" class="headerlink" title="非ES6:"></a>非ES6:</h4><p>使用indexOf去重:</p>
+<pre><code>
+var arr=[1,3,5,4,3,3,1,4]
+function noRepeat(arr) {
+  var result = []
+  for(var i = 0; i<arr.length; i++)="" {="" if(result.indexof(arr[i])="==" -1)="" result.push(arr[i])="" }="" return="" result="" norepeat(arr)="" <="" code=""></arr.length;></code></pre>
+
+<h4 id="ES6-7"><a href="#ES6-7" class="headerlink" title="ES6:"></a>ES6:</h4><pre><code>
+const set = new Set([1, 2, 3, 4, 4])
+[...set]   // [1, 2, 3, 4]
+</code></pre>
 
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
+<p>参考链接：</p>
+<ul>
+<li><p><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门</a>  </p>
+</li>
+<li><p><a href="http://www.jqhtml.com/10638.html" target="_blank" rel="noopener">http://www.jqhtml.com/10638.html</a>  </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/02/25/ES6-useful/" data-id="cjhozersd0004p0vhw30z7tgs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-windows-install-jekyll" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/24/windows-install-jekyll/" class="article-date">
+  <time datetime="2018-02-23T16:00:00.000Z" itemprop="datePublished">2018-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/24/windows-install-jekyll/">windows下安装jekyll</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>记录一下我在windows下安装jekyll所踩的各种坑。</p>
+</blockquote>
+<p>写在前面：</p>
+<p>其实这篇博客算是我的第一篇博客。在昨天折腾了一天之后终于把这个小小的博客给搭了起来，其中大部分时间都是踩坑。。。现在网上基于githubpages + jekyll 搭建博客的教程数不胜数，我在这里也不再赘述，大家自行搜索即可。我在这里主要说下在windows系统下安装jekyll的各种坑。</p>
+<h2 id="0-你需要知道的"><a href="#0-你需要知道的" class="headerlink" title="0.你需要知道的"></a>0.你需要知道的</h2><p><img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvhrxyo1j20ju03f0ti.jpg" alt=""></p>
+<h3 id="图片来自-jekyll中文网"><a href="#图片来自-jekyll中文网" class="headerlink" title="图片来自 jekyll中文网"></a>图片来自 <a href="https://www.jekyll.com.cn/docs/installation/" target="_blank" rel="noopener">jekyll中文网</a></h3><p>首先你需要知道jekyll官方并不支持你在windows下安装jekyll,所以这可能就是在windows下安装jekyll有这么多坑的关系吧…所以能不用windows还是尽量别用windows吧..</p>
+<h2 id="1-安装ruby"><a href="#1-安装ruby" class="headerlink" title="1.安装ruby"></a>1.安装ruby</h2><h3 id="ruby下载地址"><a href="#ruby下载地址" class="headerlink" title="ruby下载地址"></a><a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">ruby下载地址</a></h3><p>先安装ruby,别以为安装ruby无脑下一步就行了…要仔细看看版本,我就是吃了这个亏。直接下载<a href="https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.2.6.exe" target="_blank" rel="noopener">ruby 2.2.6 32位</a>。</p>
+<p>你可能会问：我的windows是X64的为什么不安装X64的ruby？我只能告诉你会出问题，截图我也忘了留。。。我开始就是踩了这个坑，直到在stackoverflow上找到一个答案说装X86的试试，然后问题果然就解决了。。。至于问题的具体原因不明，有知道的大神还请告诉我一下。<br>你可能又会问为什么偏偏安装ruby 2.2.6而不是其他版本。这个问题我会在稍后回答你。</p>
+<h2 id="2-安装DEVELOPMENT-KIT"><a href="#2-安装DEVELOPMENT-KIT" class="headerlink" title="2.安装DEVELOPMENT KIT"></a>2.安装DEVELOPMENT KIT</h2><h3 id="DEVELOPMENT-KIT-32bits下载地址"><a href="#DEVELOPMENT-KIT-32bits下载地址" class="headerlink" title="DEVELOPMENT KIT 32bits下载地址"></a><a href="https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe" target="_blank" rel="noopener">DEVELOPMENT KIT 32bits下载地址</a></h3><p>安装DEVELOPMENT KIT,因为jekyll的安装有一些依赖关系,为了让它功能完整,我们需要安装ruby的开发工具。<br>安装时你或许也留意到了<img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvlne753j20ad01xt8m.jpg" alt=""><br>对,它仅仅支持ruby2.0 到 ruby 2.3。至于为什么不能安装ruby 2.2.6以下的版本,那是因为后面安装jekyll时jekyll的某个依赖需要ruby2.2.5以上的支持(同样忘了截图),那么你的选择就只有ruby 2.2.6了…尼玛是不是好多坑啊!!!</p>
+<p>至于为什么也安装32位的那是因为要和安装的ruby保持一致。下载好之后直接将文件解压即可,注意文件路径不要包含英文、空格。我建议你直接解压到C盘根目录下。比如这样<code class="language-css">C:\RubyDevKit\</code></p>
+<p>然后使用命令行工具进入之前的目录<code class="language-css">cd C:\RubyDevKit\</code></p>
+<p>输入<code class="language-css">ruby dk.rb init</code>来自动检测ruby的安装,并将其添加到配置文件中去。完成这一步之后在当前目录下找到config.yml文件,打开它。看看它是不是和我的一样。<br><img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvikvexqj20lc0emmyh.jpg" alt=""><br>其实主要就是看看配置文件有没有最后一行,如果系统没有为你自动添加上去,那么就只有你自己手动将ruby路径添加上去了。注意: - 后 有一个空格。</p>
+<p>接着输入<code class="language-css">ruby dk.rb install</code>来将DevKit与你所安装的ruby绑定。</p>
+<h2 id="3-安装jekyll"><a href="#3-安装jekyll" class="headerlink" title="3.安装jekyll"></a>3.安装jekyll</h2><p>哇,终于到安装jekyll了,是不是很激动。试着在命令行工具里输入<code class="language-css">gem install jekyll</code><br>如果成功了…emmmm算你运气好(不过应该不会成功…)<br>假如你遇到这个错误了</p>
+<pre>
+<code class="language-css">   
+ERROR: Could not find a valid gem ‘jekyll’ (>= 0), here is why: 
+Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: 
+ certificate verify failed (https://api.rubygems.org/latest_spece.4.8.gz)
+</code>
+</pre>
+莫慌,这个错误的原因是因为```证书```问题，简单的解决办法为：下载最新的证书，放到指定文件夹，并配置环境变量。  
+
+
+[下载地址](http://curl.haxx.se/ca/cacert.pem)
+
+拷贝到ruby的bin目录下,环境变量进行如下配置:![](https://ws1.sinaimg.cn/large/e3507465gy1fouvkf94hbj20bh05at8m.jpg)
+
+继续安装,假如你又遇到了这个错误
+
+<pre>
+<code class="language-css">   
+Dependency Error: Yikes! It looks like you don’t have jekyll-paginate or one of its dependencies installed. In order to use 
+Jekyll as currently configured, you’ll need to install this gem. The full error message from Ruby is: ‘cannot load such file
+ – jekyll-paginate’ If you run into trouble, you can find helpful resources at Getting Helpjekyll 3.1.2 | Error: jekyll-paginate
+</code>
+</pre>
+
+<p>直接输入<code class="language-css">gem install jekyll-paginate</code></p>
+<p>最后再再次输入<code class="language-css">gem install jekyll</code><br>这回应该就是没毛病了。如果你遇到了其他问题请联系我，我们一起解决。</p>
+<h2 id="4-安装rouge"><a href="#4-安装rouge" class="headerlink" title="4.安装rouge"></a>4.安装rouge</h2><p>在命令行输入<code class="language-css">gem install rouge</code><br>然后在<code class="language-css">_config.yml</code>配置文件中配置<br><code class="language-css">highlighter: rouge</code>语法高亮。</p>
+<h2 id="5-结束"><a href="#5-结束" class="headerlink" title="5.结束"></a>5.结束</h2><p>最后看到<img src="https://ws1.sinaimg.cn/large/e3507465gy1fouvl0ayf6j20it0haq3k.jpg" alt="">这样的话,就代表jekyll安装成功了!</p>
+<p>至此,jekyll在windows下的安装就完成了。希望这篇文章能帮助苦恼的你。</p>
+<p>参考链接：</p>
+<ul>
+<li><p><a href="http://jekyll-windows.juthilo.com/" target="_blank" rel="noopener">http://jekyll-windows.juthilo.com/</a>  </p>
+</li>
+<li><p><a href="http://blog.csdn.net/wyc12306/article/details/51504885" target="_blank" rel="noopener">http://blog.csdn.net/wyc12306/article/details/51504885</a>  </p>
+</li>
+<li><p><a href="http://blog.csdn.net/qiujuer/article/details/44620019" target="_blank" rel="noopener">http://blog.csdn.net/qiujuer/article/details/44620019</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/02/24/windows-install-jekyll/" data-id="cjhozers60000p0vh5bnlp42w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jekyll/">jekyll</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-微信小程序/">技术,微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-redux/">react, redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/react-redux/" style="font-size: 10px;">react, redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/26/use-redux-in-react/">在react项目中使用redux</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/change-job/">我的转职之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/30/mpvue/">mpvue 中的一些注意事项(不定期更新)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/05/weixinapp/">记录下写微信小程序所踩的坑</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/25/ES6-useful/">ES6中最实用的特性</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Gang Feng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
 
 
 
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
-
-
+  </div>
 </body>
 </html>

@@ -1,81 +1,97 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   
+
+  
   <title>ES6中最实用的特性 | 冯罡的博客</title>
-  <meta name="author" content="Gang Feng">
-  
-  <meta name="description" content="记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。
-
-0.目录
-函数参数默认值
-模板字符串
-解构赋值
-对象属性简写
-箭头函数
-Promise
-Let与Const
-类
-模块化
-Set
-
-1.函数参数默认值非ES6:
-function foo(height, color)
-{
-    va">
-  
-  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="ES6中最实用的特性"/>
-  <meta property="og:site_name" content="冯罡的博客"/>
-
+  <meta name="description" content="记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。  0.目录 函数参数默认值 模板字符串 解构赋值 对象属性简写 箭头函数 Promise Let与Const 类 模块化 Set  1.函数参数默认值非ES6: function foo(height, color) {     var height = height || 50     var color = color ||">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6中最实用的特性">
+<meta property="og:url" content="https://ghostratel.github.io/2018/02/25/ES6-useful/index.html">
+<meta property="og:site_name" content="冯罡的博客">
+<meta property="og:description" content="记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。  0.目录 函数参数默认值 模板字符串 解构赋值 对象属性简写 箭头函数 Promise Let与Const 类 模块化 Set  1.函数参数默认值非ES6: function foo(height, color) {     var height = height || 50     var color = color ||">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-26T14:09:10.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6中最实用的特性">
+<meta name="twitter:description" content="记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。  0.目录 函数参数默认值 模板字符串 解构赋值 对象属性简写 箭头函数 Promise Let与Const 类 模块化 Set  1.函数参数默认值非ES6: function foo(height, color) {     var height = height || 50     var color = color ||">
   
-    <meta property="og:image" content="http://img.debugrun.com/pic/2017/10/9/bc6c7da1b0289dec19f9a31e9df5bd7d.jpg" />
-  
-
-  
-    <link rel="alternative" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
   
   
-    <link href="/favicon.png" rel="icon">
+    <link rel="icon" href="/favicon.png">
   
   
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">  
-  <link rel="stylesheet" href="/css/sidenav.css" media="screen" type="text/css">  
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script src="/js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body id="body" data-spy="scroll" data-target=".toc">
-  <div class="container" id="container">
-	<div class="content">
-	  <div class="page-header">		
-  <h1><a class="brand" href="/">冯罡的博客</a><span class="split"></span><span class="title">ES6中最实用的特性</span><span class="date" id="title-date"><i class="fa fa-clock-o"></i> 2018-02-25</span></h1>
-</div>		
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">冯罡的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ghostratel.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ES6-useful" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/25/ES6-useful/" class="article-date">
+  <time datetime="2018-02-24T16:00:00.000Z" itemprop="datePublished">2018-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
 
-<div class="row page">
-  <!-- cols -->	
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      ES6中最实用的特性
+    </h1>
   
 
-  
-	<div class="col-md-12">
-	  
-
-	  <!-- content -->
-	  <blockquote>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
 <p>记录几个ES6中最实用的几个特性,可以很方便地运用到平时开发中。</p>
 </blockquote>
 <h2 id="0-目录"><a href="#0-目录" class="headerlink" title="0.目录"></a>0.目录</h2><ul>
@@ -336,100 +352,148 @@ const set = new Set([1, 2, 3, 4, 4])
 <li><p><a href="http://www.jqhtml.com/10638.html" target="_blank" rel="noopener">http://www.jqhtml.com/10638.html</a>  </p>
 </li>
 </ul>
-	  
 
-	  <div>
-  		<center>
-		  <div class="pagination">
-<ul class="pagination">
-	
-	
-	
-	
-	
-	
-		
-			
-		
-	
-		
-	
-		
-			
-		
-	
-		
-	
-		
-			
-			
-		
-	
-		
-			
-			
-			
-	
-	
-		<li class="prev"><a href="/2018/03/30/mpvue/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>prev</a></li>
-	
-	<li><a href="/"><i class="fa fa-archive"></i>Home</a></li>
-	
-		<li class="next"><a href="/2018/02/24/windows-install-jekyll/" class="alignright next">next<i class="fa fa-arrow-circle-o-right"></i></a></li>
-	
-</ul>
-</div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/02/25/ES6-useful/" data-id="cjhozersd0004p0vhw30z7tgs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
 
-		</center>
-	  </div>
-	  
-	</div> <!-- col-md-9/col-md-12 -->
-	
-  </div><!-- row -->
-
-	</div>
+    </footer>
   </div>
-  <div class="container-narrow">
-	<footer> <p>
-  &copy; 2018 Gang Feng
   
-</p> </footer>
-  </div> <!-- container-narrow -->
+    
+<nav id="article-nav">
   
-<a id="gotop" href="#">   
-  <span>▲</span> 
-</a>
+    <a href="/2018/03/05/weixinapp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          记录下写微信小程序所踩的坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/24/windows-install-jekyll/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">windows下安装jekyll</div>
+    </a>
+  
+</nav>
 
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.tableofcontents.min.js"></script>
-<script src="/js/tocgenerator.min.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/search.js"></script> 
+  
+</article>
 
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-微信小程序/">技术,微信小程序</a></li></ul>
+    </div>
+  </div>
 
 
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-redux/">react, redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/react-redux/" style="font-size: 10px;">react, redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/05/26/use-redux-in-react/">在react项目中使用redux</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/change-job/">我的转职之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/30/mpvue/">mpvue 中的一些注意事项(不定期更新)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/05/weixinapp/">记录下写微信小程序所踩的坑</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/25/ES6-useful/">ES6中最实用的特性</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Gang Feng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>
