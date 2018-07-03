@@ -107,6 +107,8 @@
 <p><code>前瞻与后顾只参与查找，但不参与替换。</code></p>
 <p>下图为正,负向前瞻后顾的写法。</p>
 <p><img src="http://ww1.sinaimg.cn/large/e3507465gy1fsx2dguoeyj20kc0f4gpj.jpg" alt=""></p>
+<p>后顾的例子，匹配一个前面是英文字母的数字:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a45b'</span>.match(<span class="regexp">/(?&lt;=[a-zA-Z])\d/</span>)</span><br><span class="line"><span class="comment">// 匹配到'4'</span></span><br></pre></td></tr></table></figure>
 <p>JavaScript 语言的正则表达式，只支持先行断言（lookahead）和先行否定断言（negative lookahead），不支持后行断言（lookbehind）和后行否定断言（negative lookbehind）。ES2018 引入后行断言，V8 引擎 4.9 版（Chrome 62）已经支持。</p>
 <p>具体可参看阮老师的<img src="http://es6.ruanyifeng.com/#docs/regex" alt="ECMAScript 6 入门 - 正则的扩展"></p>
 <h2 id="4-小例子"><a href="#4-小例子" class="headerlink" title="4. 小例子"></a>4. 小例子</h2><p>自己写的验证邮箱的正则：</p>
