@@ -89,7 +89,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>正则表达式学习笔记 </p>
+<p>正则表达式学习笔记</p>
 </blockquote>
 <h2 id="0-正则表达式对象属性"><a href="#0-正则表达式对象属性" class="headerlink" title="0.正则表达式对象属性"></a>0.正则表达式对象属性</h2><p><img src="https://img4.mukewang.com/5b2d7ffa0001479212800720.jpg" alt=""></p>
 <h2 id="1-分组"><a href="#1-分组" class="headerlink" title="1. 分组()"></a>1. 分组()</h2><p>JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用<code>$1, $2....</code>获取。</p>
@@ -101,7 +101,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456'</span>.match(<span class="regexp">/\d&#123;3,5&#125;/g</span>)</span><br></pre></td></tr></table></figure>
 <p>会默认匹配到’123456’,这就是贪婪模式。当需要使用非贪婪模式，即希望匹配到的结果是’123’时，可以这样写</p>
 <p><img src="https://img2.mukewang.com/5b2d18270001d96f12800720.jpg" alt=""></p>
-<h2 id="3-前瞻与后顾"><a href="#3-前瞻与后顾" class="headerlink" title="3.前瞻与后顾"></a>3.前瞻与后顾</h2><p>先看前瞻： </p>
+<h2 id="3-前瞻与后顾"><a href="#3-前瞻与后顾" class="headerlink" title="3.前瞻与后顾"></a>3.前瞻与后顾</h2><p>先看前瞻：</p>
 <p><img src="https://img1.mukewang.com/5b2d7ec30001a07912800720.jpg" alt=""></p>
 <p>这条正则表达式将匹配后面是数字的单词字符，例子中匹配到的字符就是<code>a</code>。对，不是<code>a2</code>！</p>
 <p><code>前瞻与后顾只参与查找，但不参与替换。</code></p>
@@ -110,13 +110,23 @@
 <p>后顾的例子，匹配一个前面是英文字母的数字:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a45b'</span>.match(<span class="regexp">/(?&lt;=[a-zA-Z])\d/</span>)</span><br><span class="line"><span class="comment">// 匹配到'4'</span></span><br></pre></td></tr></table></figure>
 <p>JavaScript 语言的正则表达式，只支持先行断言（lookahead）和先行否定断言（negative lookahead），不支持后行断言（lookbehind）和后行否定断言（negative lookbehind）。ES2018 引入后行断言，V8 引擎 4.9 版（Chrome 62）已经支持。</p>
-<p>具体可参看阮老师的<img src="http://es6.ruanyifeng.com/#docs/regex" alt="ECMAScript 6 入门 - 正则的扩展"></p>
-<h2 id="4-小例子"><a href="#4-小例子" class="headerlink" title="4. 小例子"></a>4. 小例子</h2><p>自己写的验证邮箱的正则：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[a-zA-z\d_]+@[A-Za-z\d]+\.[a-zA-Z]&#123;<span class="number">2</span>,<span class="number">3</span>&#125;\.*[a-zA-Z]*<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+<p>具体可参看阮老师的<a href="http://es6.ruanyifeng.com/#docs/regex" target="_blank" rel="noopener">ECMAScript 6 入门 - 正则的扩展</a></p>
+<h2 id="4-回溯引用"><a href="#4-回溯引用" class="headerlink" title="4. 回溯引用"></a>4. 回溯引用</h2><p>匹配字符串中连续相同3次的数字。</p>
+<p><img src="http://note.youdao.com/yws/res/486/WEBRESOURCE977630292aeb184ab620ceb35d8e2d43" alt=""></p>
+<p>图中正则表达式中的<code>\1</code>就是分组中匹配到的数字的引用。</p>
+<h2 id="4-小例子"><a href="#4-小例子" class="headerlink" title="4. 小例子"></a>4. 小例子</h2><ol>
+<li>4到64位必须含有数字、字母、下划线以及横线的字符串。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?=.*\d+.*)(?=.*[a-zA-Z]+.*)(?=.*\-+.*)(?=.*_+.*)[<span class="number">0</span><span class="number">-9</span>a-zA-Z\-_]&#123;<span class="number">4</span>,<span class="number">64</span>&#125;/</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>8到16位密码，必须包含数字、大小写字母、不包含特殊字符。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?=.*[a-z]+.*)(?=.*[A-Z]+.*)(?=.*\d+.*)(?!.*[\&amp;\-_\|\%\#\@\.\s]+.*)[a-zA-Z0-9]&#123;8,16&#125;/</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/07/03/regular-expression/" data-id="cjj5svmdl0000igvh2vh7sbxk" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/07/03/regular-expression/" data-id="cjkr02beo000tnovh8xvmdhqy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RegExp/">RegExp</a></li></ul>
@@ -194,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/05/26/use-redux-in-react/" data-id="cjhq319ly0006cgvhtlwncwzk" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/05/26/use-redux-in-react/" data-id="cjkr02beb0005novhiyig3z7o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react-redux/">react, redux</a></li></ul>
@@ -266,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/04/04/change-job/" data-id="cjhq319m1000acgvh5kq1elmh" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/04/04/change-job/" data-id="cjkr02bec0006novhk5lvp0oj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/">其他</a></li></ul>
@@ -318,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/03/30/mpvue/" data-id="cjhq319lr0001cgvhq0sqx6w9" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/03/30/mpvue/" data-id="cjkr02bea0004novhjeq5qgu7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -372,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/03/05/weixinapp/" data-id="cjhq319lw0005cgvhl5pykxv7" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/03/05/weixinapp/" data-id="cjkr02bef000anovhrt9iputn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -673,7 +683,7 @@ const set = new Set([1, 2, 3, 4, 4])
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/02/25/ES6-useful/" data-id="cjhq319lv0004cgvhfynyn96a" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/02/25/ES6-useful/" data-id="cjkr02be60001novhe27ffm5v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
@@ -768,7 +778,7 @@ Jekyll as currently configured, you’ll need to install this gem. The full erro
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ghostratel.github.io/2018/02/24/windows-install-jekyll/" data-id="cjhq319ln0000cgvhpcrob7b8" class="article-share-link">Share</a>
+      <a data-url="https://ghostratel.github.io/2018/02/24/windows-install-jekyll/" data-id="cjkr02be20000novht13tp4t0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jekyll/">jekyll</a></li></ul>
