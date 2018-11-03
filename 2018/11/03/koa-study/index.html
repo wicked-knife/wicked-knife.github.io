@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS正则表达式学习笔记 | 冯罡的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Koa学习笔记  本文出现的app变量均为new出来的koa实例,即：12const Koa = require(&apos;koa&apos;);const app = new Koa(); 0.koa中间件及洋葱模型 这张图片是koa官方洋葱模型的解释，很直观。 我们所说的koa中间件其实可以看作一瓣一瓣的洋葱瓣，进入洋葱的request和出去洋葱的response必然会穿过同一层洋葱瓣。。。好像很难用文字说清">
+<meta name="keywords" content="koa2 node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS正则表达式学习笔记">
+<meta property="og:url" content="https://ghostratel.github.io/2018/11/03/koa-study/index.html">
+<meta property="og:site_name" content="冯罡的博客">
+<meta property="og:description" content="Koa学习笔记  本文出现的app变量均为new出来的koa实例,即：12const Koa = require(&apos;koa&apos;);const app = new Koa(); 0.koa中间件及洋葱模型 这张图片是koa官方洋葱模型的解释，很直观。 我们所说的koa中间件其实可以看作一瓣一瓣的洋葱瓣，进入洋葱的request和出去洋葱的response必然会穿过同一层洋葱瓣。。。好像很难用文字说清">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541262875852&di=358aa19b016631d1851ec9bd4ebb4067&imgtype=0&src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F12693563-cb3d57e16f48151b.png">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fwv7xstpfeg20gi0jgnil.gif">
+<meta property="og:updated_time" content="2018-11-03T15:04:31.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS正则表达式学习笔记">
+<meta name="twitter:description" content="Koa学习笔记  本文出现的app变量均为new出来的koa实例,即：12const Koa = require(&apos;koa&apos;);const app = new Koa(); 0.koa中间件及洋葱模型 这张图片是koa官方洋葱模型的解释，很直观。 我们所说的koa中间件其实可以看作一瓣一瓣的洋葱瓣，进入洋葱的request和出去洋葱的response必然会穿过同一层洋葱瓣。。。好像很难用文字说清">
+<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1541262875852&di=358aa19b016631d1851ec9bd4ebb4067&imgtype=0&src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F12693563-cb3d57e16f48151b.png">
+  
+    <link rel="alternate" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">冯罡的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ghostratel.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-koa-study" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/03/koa-study/" class="article-date">
+  <time datetime="2018-11-02T16:00:00.000Z" itemprop="datePublished">2018-11-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS正则表达式学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Koa学习笔记</p>
+</blockquote>
+<p>本文出现的<code>app</code>变量均为new出来的koa实例,即：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</span><br></pre></td></tr></table></figure></p>
+<h2 id="0-koa中间件及洋葱模型"><a href="#0-koa中间件及洋葱模型" class="headerlink" title="0.koa中间件及洋葱模型"></a>0.koa中间件及洋葱模型</h2><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1541262875852&amp;di=358aa19b016631d1851ec9bd4ebb4067&amp;imgtype=0&amp;src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F12693563-cb3d57e16f48151b.png" alt=""></p>
+<p>这张图片是koa官方洋葱模型的解释，很直观。</p>
+<p>我们所说的koa中间件其实可以看作一瓣一瓣的洋葱瓣，进入洋葱的request和出去洋葱的response必然会穿过同一层洋葱瓣。。。<br>好像很难用文字说清。。直接上图吧。。</p>
+<p><img src="http://ww1.sinaimg.cn/large/e3507465gy1fwv7xstpfeg20gi0jgnil.gif" alt=""></p>
+<p>几种常用中间件的应用:</p>
+<p>(1).应用级中间件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">    <span class="keyword">await</span> next()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'world'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>可以看作一种全局的中间件，在洋葱的最外层，会最先进入，最后出去。接收到任何request时均会打印hello，响应时均为打印world。只有显示地调用next方法时才会执行下一个中间件。</p>
+<p>(2).路由中间件:</p>
+<p>可以先跳过这里，先看下一小节，然后再回来。</p>
+<p>声明一个路由中间件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/test'</span>, <span class="keyword">async</span>(ctx, next) =&gt; &#123;</span><br><span class="line">    ctx.body = <span class="string">'测试页面'</span></span><br><span class="line">    <span class="keyword">await</span> next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当请求<code>/test</code>时页面会返回一段文字，就是这么简单。路由中间件会在进入应用级中间件之后进入，即使路由中间件是在应用级中间件之前声明的。</p>
+<p>(3).错误处理中间件:</p>
+<p>比如路由匹配不到时返回404页面:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">app.use(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> next()</span><br><span class="line">    <span class="keyword">if</span>(ctx.status === <span class="number">404</span>) &#123;</span><br><span class="line">        ctx.body = <span class="string">'404错误'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>因为要返回404错误，所以中间件的业务处理应该放在next方法调用之后，即响应阶段进行。</p>
+<p>(4).第三方中间件:</p>
+<p>这个没什么好说的。比如我们需要一个<code>static</code>目录用来存放静态资源(css,js等)。可以使用<code>koa-static</code>中间件来将一个目录变成静态资源服务器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> serve = <span class="built_in">require</span>(<span class="string">'koa-static'</span>)</span><br><span class="line">app.use(serve(__dirname + <span class="string">'/static'</span>))</span><br></pre></td></tr></table></figure>
+<p>这样就将’static’目录变成了一个静态资源服务器。路由便能够正确匹配到静态资源。</p>
+<h2 id="1-koa-router-安装及配置"><a href="#1-koa-router-安装及配置" class="headerlink" title="1. koa-router 安装及配置"></a>1. koa-router 安装及配置</h2><p>koa-router是koa框架进行路由管理的中间件。</p>
+<p>安装：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa-router --save</span><br></pre></td></tr></table></figure>
+<p>基本使用:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>);</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/'</span>, (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="comment">// ctx.router available</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app</span><br><span class="line">  .use(router.routes())</span><br><span class="line">  .use(router.allowedMethods());</span><br></pre></td></tr></table></figure>
+<p>通过使用<code>router.get|put|post|patch|delete</code>等方法即可很方便地控制路由。</p>
+<p>动态路由:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/users/:id'</span>,(ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> id = &#123;ctx.params&#125;</span><br><span class="line">    <span class="built_in">console</span>.log(id)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当请求类似<code>/users/batman</code>的动态url时，就可以从上下文（ctx）的params属性上拿到<code>{id: &#39;batman&#39;}</code>的路由参数，十分方便。</p>
+<h2 id="2-模板引擎的使用"><a href="#2-模板引擎的使用" class="headerlink" title="2.模板引擎的使用"></a>2.模板引擎的使用</h2><p>这里用ejs模板引擎举例。先安装ejs和koa-views（koa的模板渲染中间件）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save ejs</span><br><span class="line">npm install --save koa-views</span><br></pre></td></tr></table></figure>
+<p>配置模板引擎：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> views = <span class="built_in">require</span>(<span class="string">'koa-views'</span>)</span><br><span class="line">app.use(views(__dirname + <span class="string">'/views'</span>, &#123;</span><br><span class="line">    extension: <span class="string">'ejs'</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>假设我们有一个<code>views</code>目录,这样就可以引用所有后缀名为.ejs的ejs模板文件。当客户端请求<code>&#39;/&#39;</code>时渲染index.ejs，可以这样写:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/'</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    <span class="keyword">await</span> ctx.render(<span class="string">'index'</span>)</span><br><span class="line">    <span class="keyword">await</span> next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="3-koa操作cookie"><a href="#3-koa操作cookie" class="headerlink" title="3. koa操作cookie"></a>3. koa操作cookie</h2><p>在koa中操作cookie十分简单方便，主要是cookie的读写操作。</p>
+<p>写入cookie:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/'</span>, <span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">    ctx.cookies.set(<span class="string">'username'</span>, <span class="string">'hulk'</span>, &#123;<span class="attr">httpOnly</span>: <span class="literal">false</span>&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>以上代码在客户端访问<code>&#39;/&#39;</code>,服务器会在客户端上写入<code>username=hulk</code>name value形式的cookie，方法的最后一个参数为写入cookie的配置参数，<br>以上代码配置参数为设置此条cookie服务器，客户端均可读取修改此条cookie。<br>更多配置参数:</p>
+<ul>
+<li>maxAge 一个数字表示从 Date.now() 得到的毫秒数</li>
+<li>signed cookie 签名值</li>
+<li>expires cookie 过期的 Date</li>
+<li>path cookie 路径, 默认是’/‘</li>
+<li>domain cookie 域名</li>
+<li>secure 安全 cookie</li>
+<li>httpOnly 服务器可访问 cookie, 默认是 true</li>
+<li>overwrite 一个布尔值，表示是否覆盖以前设置的同名的 cookie (默认是 false). 如果是 true, 在同一个请求中设置相同名称的所有 Cookie（不管路径或域）是否在设置此Cookie 时从 Set-Cookie 标头中过滤掉。</li>
+</ul>
+<p>读取cookie:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    ctx.cookies.get(<span class="string">'username'</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="4-未完待续"><a href="#4-未完待续" class="headerlink" title="4.未完待续"></a>4.未完待续</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/11/03/koa-study/" data-id="cjo1kt8gg000ff4vht5fmewsd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/koa2-node-js/">koa2 node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/03/regular-expression/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS正则表达式学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-微信小程序/">技术,微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/koa2-node-js/">koa2 node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-redux/">react, redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/koa2-node-js/" style="font-size: 10px;">koa2 node.js</a> <a href="/tags/react-redux/" style="font-size: 10px;">react, redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/03/koa-study/">JS正则表达式学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/03/regular-expression/">JS正则表达式学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/26/use-redux-in-react/">在react项目中使用redux</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/change-job/">我的转职之路</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/30/mpvue/">mpvue 中的一些注意事项(不定期更新)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Gang Feng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
