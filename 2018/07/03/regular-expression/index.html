@@ -7,26 +7,27 @@
   
   <title>JS正则表达式学习笔记 | 冯罡的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正则表达式学习笔记  0.正则表达式对象属性 1. 分组()JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用$1, $2....获取。  当想忽略()匹配到的分组时，可以这样写：  即在()内加上?:, 就像这样(?:) 2.贪婪与非贪婪JS中正则表达式默认是贪婪模式，即 1&apos;123456&apos;.match(/\d&amp;#123;3,5&amp;#125;/g) 会默认匹配到’123456’,这">
+  <meta name="description" content="正则表达式学习笔记  0.思维导图 1.正则表达式对象属性 2. 分组()JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用$1, $2....获取。  当想忽略()匹配到的分组时，可以这样写：  即在()内加上?:, 就像这样(?:) 3.贪婪与非贪婪JS中正则表达式默认是贪婪模式，即 1&apos;123456&apos;.match(/\d&amp;#123;3,5&amp;#125;/g) 会默认匹配到’12">
 <meta name="keywords" content="RegExp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS正则表达式学习笔记">
 <meta property="og:url" content="https://ghostratel.github.io/2018/07/03/regular-expression/index.html">
 <meta property="og:site_name" content="冯罡的博客">
-<meta property="og:description" content="正则表达式学习笔记  0.正则表达式对象属性 1. 分组()JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用$1, $2....获取。  当想忽略()匹配到的分组时，可以这样写：  即在()内加上?:, 就像这样(?:) 2.贪婪与非贪婪JS中正则表达式默认是贪婪模式，即 1&apos;123456&apos;.match(/\d&amp;#123;3,5&amp;#125;/g) 会默认匹配到’123456’,这">
+<meta property="og:description" content="正则表达式学习笔记  0.思维导图 1.正则表达式对象属性 2. 分组()JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用$1, $2....获取。  当想忽略()匹配到的分组时，可以这样写：  即在()内加上?:, 就像这样(?:) 3.贪婪与非贪婪JS中正则表达式默认是贪婪模式，即 1&apos;123456&apos;.match(/\d&amp;#123;3,5&amp;#125;/g) 会默认匹配到’12">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fx25hwnd8wj20sc1c4n25.jpg">
 <meta property="og:image" content="https://img4.mukewang.com/5b2d7ffa0001479212800720.jpg">
 <meta property="og:image" content="https://img.mukewang.com/5b2d7c1c00018a5c12800720.jpg">
 <meta property="og:image" content="https://img.mukewang.com/5b2d7c1c00018a5c12800720.jpg">
 <meta property="og:image" content="https://img2.mukewang.com/5b2d18270001d96f12800720.jpg">
 <meta property="og:image" content="https://img1.mukewang.com/5b2d7ec30001a07912800720.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fsx2dguoeyj20kc0f4gpj.jpg">
-<meta property="og:image" content="http://note.youdao.com/yws/res/486/WEBRESOURCE977630292aeb184ab620ceb35d8e2d43">
-<meta property="og:updated_time" content="2018-11-03T13:17:53.344Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fx25j4ou0nj20br01p3ye.jpg">
+<meta property="og:updated_time" content="2018-11-09T13:56:12.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS正则表达式学习笔记">
-<meta name="twitter:description" content="正则表达式学习笔记  0.正则表达式对象属性 1. 分组()JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用$1, $2....获取。  当想忽略()匹配到的分组时，可以这样写：  即在()内加上?:, 就像这样(?:) 2.贪婪与非贪婪JS中正则表达式默认是贪婪模式，即 1&apos;123456&apos;.match(/\d&amp;#123;3,5&amp;#125;/g) 会默认匹配到’123456’,这">
-<meta name="twitter:image" content="https://img4.mukewang.com/5b2d7ffa0001479212800720.jpg">
+<meta name="twitter:description" content="正则表达式学习笔记  0.思维导图 1.正则表达式对象属性 2. 分组()JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用$1, $2....获取。  当想忽略()匹配到的分组时，可以这样写：  即在()内加上?:, 就像这样(?:) 3.贪婪与非贪婪JS中正则表达式默认是贪婪模式，即 1&apos;123456&apos;.match(/\d&amp;#123;3,5&amp;#125;/g) 会默认匹配到’12">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fx25hwnd8wj20sc1c4n25.jpg">
   
     <link rel="alternate" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
   
@@ -102,17 +103,18 @@
         <blockquote>
 <p>正则表达式学习笔记</p>
 </blockquote>
-<h2 id="0-正则表达式对象属性"><a href="#0-正则表达式对象属性" class="headerlink" title="0.正则表达式对象属性"></a>0.正则表达式对象属性</h2><p><img src="https://img4.mukewang.com/5b2d7ffa0001479212800720.jpg" alt=""></p>
-<h2 id="1-分组"><a href="#1-分组" class="headerlink" title="1. 分组()"></a>1. 分组()</h2><p>JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用<code>$1, $2....</code>获取。</p>
+<h2 id="0-思维导图"><a href="#0-思维导图" class="headerlink" title="0.思维导图"></a>0.思维导图</h2><p><img src="http://ww1.sinaimg.cn/large/e3507465gy1fx25hwnd8wj20sc1c4n25.jpg" alt=""></p>
+<h2 id="1-正则表达式对象属性"><a href="#1-正则表达式对象属性" class="headerlink" title="1.正则表达式对象属性"></a>1.正则表达式对象属性</h2><p><img src="https://img4.mukewang.com/5b2d7ffa0001479212800720.jpg" alt=""></p>
+<h2 id="2-分组"><a href="#2-分组" class="headerlink" title="2. 分组()"></a>2. 分组()</h2><p>JS中正则表达式分组使用()，当()中的表达式匹配到字符串时可用<code>$1, $2....</code>获取。</p>
 <p><img src="https://img.mukewang.com/5b2d7c1c00018a5c12800720.jpg" alt=""></p>
 <p>当想忽略()匹配到的分组时，可以这样写：</p>
 <p><img src="https://img.mukewang.com/5b2d7c1c00018a5c12800720.jpg" alt=""></p>
 <p>即在()内加上?:, 就像这样<code>(?:)</code></p>
-<h2 id="2-贪婪与非贪婪"><a href="#2-贪婪与非贪婪" class="headerlink" title="2.贪婪与非贪婪"></a>2.贪婪与非贪婪</h2><p>JS中正则表达式默认是贪婪模式，即</p>
+<h2 id="3-贪婪与非贪婪"><a href="#3-贪婪与非贪婪" class="headerlink" title="3.贪婪与非贪婪"></a>3.贪婪与非贪婪</h2><p>JS中正则表达式默认是贪婪模式，即</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456'</span>.match(<span class="regexp">/\d&#123;3,5&#125;/g</span>)</span><br></pre></td></tr></table></figure>
 <p>会默认匹配到’123456’,这就是贪婪模式。当需要使用非贪婪模式，即希望匹配到的结果是’123’时，可以这样写</p>
 <p><img src="https://img2.mukewang.com/5b2d18270001d96f12800720.jpg" alt=""></p>
-<h2 id="3-前瞻与后顾"><a href="#3-前瞻与后顾" class="headerlink" title="3.前瞻与后顾"></a>3.前瞻与后顾</h2><p>先看前瞻：</p>
+<h2 id="4-前瞻与后顾"><a href="#4-前瞻与后顾" class="headerlink" title="4.前瞻与后顾"></a>4.前瞻与后顾</h2><p>先看前瞻：</p>
 <p><img src="https://img1.mukewang.com/5b2d7ec30001a07912800720.jpg" alt=""></p>
 <p>这条正则表达式将匹配后面是数字的单词字符，例子中匹配到的字符就是<code>a</code>。对，不是<code>a2</code>！</p>
 <p><code>前瞻与后顾只参与查找，但不参与替换。</code></p>
@@ -122,10 +124,10 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a45b'</span>.match(<span class="regexp">/(?&lt;=[a-zA-Z])\d/</span>)</span><br><span class="line"><span class="comment">// 匹配到'4'</span></span><br></pre></td></tr></table></figure>
 <p>JavaScript 语言的正则表达式，只支持先行断言（lookahead）和先行否定断言（negative lookahead），不支持后行断言（lookbehind）和后行否定断言（negative lookbehind）。ES2018 引入后行断言，V8 引擎 4.9 版（Chrome 62）已经支持。</p>
 <p>具体可参看阮老师的<a href="http://es6.ruanyifeng.com/#docs/regex" target="_blank" rel="noopener">ECMAScript 6 入门 - 正则的扩展</a></p>
-<h2 id="4-回溯引用"><a href="#4-回溯引用" class="headerlink" title="4. 回溯引用"></a>4. 回溯引用</h2><p>匹配字符串中连续相同3次的数字。</p>
-<p><img src="http://note.youdao.com/yws/res/486/WEBRESOURCE977630292aeb184ab620ceb35d8e2d43" alt=""></p>
+<h2 id="5-回溯引用"><a href="#5-回溯引用" class="headerlink" title="5. 回溯引用"></a>5. 回溯引用</h2><p>匹配字符串中连续相同3次的数字。</p>
+<p><img src="http://ww1.sinaimg.cn/large/e3507465gy1fx25j4ou0nj20br01p3ye.jpg" alt=""></p>
 <p>图中正则表达式中的<code>\1</code>就是分组中匹配到的数字的引用。</p>
-<h2 id="5-小例子"><a href="#5-小例子" class="headerlink" title="5. 小例子"></a>5. 小例子</h2><ol>
+<h2 id="6-小例子"><a href="#6-小例子" class="headerlink" title="6. 小例子"></a>6. 小例子</h2><ol>
 <li>4到64位必须含有数字、字母、下划线以及横线的字符串。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?=.*\d+.*)(?=.*[a-zA-Z]+.*)(?=.*\-+.*)(?=.*_+.*)[<span class="number">0</span><span class="number">-9</span>a-zA-Z\-_]&#123;<span class="number">4</span>,<span class="number">64</span>&#125;/</span><br></pre></td></tr></table></figure>
