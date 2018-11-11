@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>MongoDB学习笔记 | 冯罡的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. MongoDB 管道操作符MongoDB常用管道符(0)  假设数据库user下有两个集合userinfo和userfrom. userinfo集合中的数据:  userfrom集合中的数据:  (1) $project 管道操作符$project用来控制查询结果显示的字段，下方语句表示查询出来的文档显示其name和from字段 12345db.userinfo.aggregate([">
+<meta name="keywords" content="MongoDB node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB学习笔记">
+<meta property="og:url" content="https://ghostratel.github.io/2018/11/11/mongoDB-study/index.html">
+<meta property="og:site_name" content="冯罡的博客">
+<meta property="og:description" content="1. MongoDB 管道操作符MongoDB常用管道符(0)  假设数据库user下有两个集合userinfo和userfrom. userinfo集合中的数据:  userfrom集合中的数据:  (1) $project 管道操作符$project用来控制查询结果显示的字段，下方语句表示查询出来的文档显示其name和from字段 12345db.userinfo.aggregate([">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fx46ytsk6ej20sw09njs1.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fx46zb0a7uj20f402vglj.jpg">
+<meta property="og:updated_time" content="2018-11-11T15:02:03.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB学习笔记">
+<meta name="twitter:description" content="1. MongoDB 管道操作符MongoDB常用管道符(0)  假设数据库user下有两个集合userinfo和userfrom. userinfo集合中的数据:  userfrom集合中的数据:  (1) $project 管道操作符$project用来控制查询结果显示的字段，下方语句表示查询出来的文档显示其name和from字段 12345db.userinfo.aggregate([">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/e3507465gy1fx46ytsk6ej20sw09njs1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="冯罡的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">冯罡的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ghostratel.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mongoDB-study" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/11/mongoDB-study/" class="article-date">
+  <time datetime="2018-11-10T16:00:00.000Z" itemprop="datePublished">2018-11-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术-数据库/">技术 数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MongoDB学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-MongoDB-管道操作符"><a href="#1-MongoDB-管道操作符" class="headerlink" title="1. MongoDB 管道操作符"></a>1. MongoDB 管道操作符</h1><h2 id="MongoDB常用管道符"><a href="#MongoDB常用管道符" class="headerlink" title="MongoDB常用管道符"></a>MongoDB常用管道符</h2><p>(0) </p>
+<p>假设数据库user下有两个集合userinfo和userfrom.</p>
+<p>userinfo集合中的数据:</p>
+<p><img src="http://ww1.sinaimg.cn/large/e3507465gy1fx46ytsk6ej20sw09njs1.jpg" alt=""></p>
+<p>userfrom集合中的数据:</p>
+<p><img src="http://ww1.sinaimg.cn/large/e3507465gy1fx46zb0a7uj20f402vglj.jpg" alt=""></p>
+<p>(1) $project</p>
+<p>管道操作符<code>$project</code>用来控制查询结果显示的字段，下方语句表示查询出来的文档<br>显示其name和from字段</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.userinfo.aggregate([</span><br><span class="line">      &#123;</span><br><span class="line">          $project: &#123;<span class="attr">name</span>: <span class="number">1</span>, <span class="attr">from</span>: <span class="number">1</span>&#125;</span><br><span class="line">      &#125;</span><br><span class="line">  ])</span><br></pre></td></tr></table></figure>
+<p>result:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be18c280fd50eed27a00afd"</span>), <span class="string">"name"</span> : <span class="string">"浩克"</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6c06943778816488aef97"</span>), <span class="string">"name"</span> : <span class="string">"灭霸"</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6c4a3a1641007e09ab933"</span>), <span class="string">"name"</span> : <span class="string">"格鲁特"</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6ff36f2bac600909026c3"</span>), <span class="string">"name"</span> : <span class="string">"星爵"</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7aef53ea0520550796519"</span>), <span class="string">"name"</span> : <span class="string">"火箭浣熊"</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d3703ea052055079651a"</span>), <span class="string">"name"</span> : <span class="string">"索尔"</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d52873ae2929fc5670d8"</span>), <span class="string">"name"</span> : <span class="string">"美国队长"</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d53773ae2929fc5670d9"</span>), <span class="string">"name"</span> : <span class="string">"钢铁侠"</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7da14fc0402147c12055a"</span>), <span class="string">"name"</span> : <span class="string">"曼哈顿博士"</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>(2) $match</p>
+<p>管道操作符<code>$match</code>用来筛选数据,下方语句表示筛选age字段值大于100且from字段值等于’earth’的文档。当age字段值类型为String时，无法进行比较。</p>
+<p>以下语句$match和$project管道顺序调换后无法正常查询到数据，是因为$project控制文档显示的字段为name和from，所以age无法进行比较，所以无法正常查询到数据。在书写数据库查询语句时应注意这点！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.userinfo.aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $match: &#123;<span class="attr">age</span>: &#123;<span class="attr">$gt</span>: <span class="number">100</span>&#125;, <span class="attr">from</span>: &#123;<span class="attr">$eq</span>: <span class="string">'earth'</span>&#125;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $project: &#123;<span class="attr">name</span>: <span class="number">1</span>, <span class="attr">from</span> : <span class="number">1</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>result:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7da14fc0402147c12055a"</span>), <span class="string">"name"</span> : <span class="string">"曼哈顿博士"</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>(3) $group<br>管道操作符<code>$group</code>用于将集合中的文档分组，一般用来统计结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.userinfo.aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $group: &#123;<span class="attr">_id</span>: <span class="string">'$from'</span>, <span class="attr">count</span>: &#123;<span class="attr">$sum</span>: <span class="number">1</span>&#125;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>result:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : <span class="string">"cosmos"</span>, <span class="string">"count"</span> : <span class="number">5</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : <span class="string">"earth"</span>, <span class="string">"count"</span> : <span class="number">4</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>(4) $sort<br>管道操作符<code>$group</code>用于将集合中的文档排序。1为升序，-1为降序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.userinfo.aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $project: &#123;<span class="attr">name</span>: <span class="number">1</span>, <span class="attr">age</span>: <span class="number">1</span>&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $sort: &#123;<span class="attr">age</span>: <span class="number">1</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>result:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6c4a3a1641007e09ab933"</span>), <span class="string">"name"</span> : <span class="string">"格鲁特"</span>, <span class="string">"age"</span> : <span class="number">3</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7aef53ea0520550796519"</span>), <span class="string">"name"</span> : <span class="string">"火箭浣熊"</span>, <span class="string">"age"</span> : <span class="number">30</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6ff36f2bac600909026c3"</span>), <span class="string">"name"</span> : <span class="string">"星爵"</span>, <span class="string">"age"</span> : <span class="number">33</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d53773ae2929fc5670d9"</span>), <span class="string">"name"</span> : <span class="string">"钢铁侠"</span>, <span class="string">"age"</span> : <span class="number">44</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be18c280fd50eed27a00afd"</span>), <span class="string">"name"</span> : <span class="string">"浩克"</span>, <span class="string">"age"</span> : <span class="number">45</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d52873ae2929fc5670d8"</span>), <span class="string">"name"</span> : <span class="string">"美国队长"</span>, <span class="string">"age"</span> : <span class="number">80</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7da14fc0402147c12055a"</span>), <span class="string">"name"</span> : <span class="string">"曼哈顿博士"</span>, <span class="string">"age"</span> : <span class="number">150</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d3703ea052055079651a"</span>), <span class="string">"name"</span> : <span class="string">"索尔"</span>, <span class="string">"age"</span> : <span class="number">1500</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6c06943778816488aef97"</span>), <span class="string">"name"</span> : <span class="string">"灭霸"</span>, <span class="string">"age"</span> : <span class="number">2000</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>(5) $limit</p>
+<p>管道操作符<code>$limit</code>用来限制文档查询数量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">db.userinfo.aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $match: &#123;<span class="attr">age</span>: &#123;<span class="attr">$gt</span>: <span class="number">35</span>&#125;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $sort: &#123;<span class="attr">age</span>: <span class="number">1</span>&#125;  </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $limit: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>result:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d53773ae2929fc5670d9"</span>), <span class="string">"name"</span> : <span class="string">"钢铁侠"</span>, <span class="string">"age"</span> : <span class="number">44</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be18c280fd50eed27a00afd"</span>), <span class="string">"name"</span> : <span class="string">"浩克"</span>, <span class="string">"age"</span> : <span class="number">45</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d52873ae2929fc5670d8"</span>), <span class="string">"name"</span> : <span class="string">"美国队长"</span>, <span class="string">"age"</span> : <span class="number">80</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>(6) $skip<br>管道操作符<code>$skip</code>用来跳过一定数量的查询到的文档。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">db.userinfo.aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $match: &#123;<span class="attr">age</span>: &#123;<span class="attr">$gt</span>: <span class="number">35</span>&#125;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $sort: &#123;<span class="attr">age</span>: <span class="number">1</span>&#125;  </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $limit: <span class="number">3</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        $skip: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be18c280fd50eed27a00afd"</span>), <span class="string">"name"</span> : <span class="string">"浩克"</span>, <span class="string">"age"</span> : <span class="number">45</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d52873ae2929fc5670d8"</span>), <span class="string">"name"</span> : <span class="string">"美国队长"</span>, <span class="string">"age"</span> : <span class="number">80</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>当交换<code>$limit</code>和<code>$skip</code>的管道顺序时，查询到的结果是不一样的。交换后的result:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be18c280fd50eed27a00afd"</span>), <span class="string">"name"</span> : <span class="string">"浩克"</span>, <span class="string">"age"</span> : <span class="number">45</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d52873ae2929fc5670d8"</span>), <span class="string">"name"</span> : <span class="string">"美国队长"</span>, <span class="string">"age"</span> : <span class="number">80</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7da14fc0402147c12055a"</span>), <span class="string">"name"</span> : <span class="string">"曼哈顿博士"</span>, <span class="string">"age"</span> : <span class="number">150</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>(7) $lookup</p>
+<p>管道操作符<code>$lookup</code>主要用来将多个集合进行关联查询。以下语句根据userfrom集合的comefrom字段对userinfo集合的文档进行关联查询。并将查询到的文档放到heros字段下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">db.userfrom.aggregate([</span><br><span class="line">    &#123;</span><br><span class="line">        $lookup: &#123;</span><br><span class="line">            <span class="keyword">from</span>: <span class="string">'userinfo'</span>,</span><br><span class="line">            localField: <span class="string">'comefrom'</span>,</span><br><span class="line">            foreignField: <span class="string">'from'</span>,</span><br><span class="line">            <span class="keyword">as</span>: <span class="string">'heros'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>result: </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7e28b7dbe653350b3d151"</span>), <span class="string">"comefrom"</span> : <span class="string">"earth"</span>, <span class="string">"heros"</span> : [ &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be18c280fd50eed27a00afd"</span>), <span class="string">"name"</span> : <span class="string">"浩克"</span>, <span class="string">"age"</span> : <span class="number">45</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d52873ae2929fc5670d8"</span>), <span class="string">"name"</span> : <span class="string">"美 国队长"</span>, <span class="string">"age"</span> : <span class="number">80</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d53773ae2929fc5670d9"</span>), <span class="string">"name"</span> : <span class="string">"钢铁侠"</span>, <span class="string">"age"</span> : <span class="number">44</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7da14fc0402147c12055a"</span>), <span class="string">"name"</span> : <span class="string">"曼哈顿博士"</span>, <span class="string">"age"</span> : <span class="number">150</span>, <span class="string">"from"</span> : <span class="string">"earth"</span> &#125; ] &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7e2977dbe653350b3d152"</span>), <span class="string">"comefrom"</span> : <span class="string">"cosmos"</span>, <span class="string">"heros"</span> : [ &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6c06943778816488aef97"</span>), <span class="string">"name"</span> : <span class="string">"灭霸"</span>, <span class="string">"age"</span> : <span class="number">2000</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6c4a3a1641007e09ab933"</span>), <span class="string">"name"</span> : <span class="string">"格鲁特"</span>, <span class="string">"age"</span> : <span class="number">3</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be6ff36f2bac600909026c3"</span>), <span class="string">"name"</span> : <span class="string">"星爵"</span>, <span class="string">"age"</span> : <span class="number">33</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7aef53ea0520550796519"</span>), <span class="string">"name"</span> : <span class="string">"火箭浣熊"</span>, <span class="string">"age"</span> : <span class="number">30</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125;, &#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5be7d3703ea052055079651a"</span>), <span class="string">"name"</span> : <span class="string">"索尔"</span>, <span class="string">"age"</span> : <span class="number">1500</span>, <span class="string">"from"</span> : <span class="string">"cosmos"</span> &#125; ] &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ghostratel.github.io/2018/11/11/mongoDB-study/" data-id="cjod0acx8000084vhmbud10iz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB-node-js/">MongoDB node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/03/koa-study/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Koa学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-nodejs/">技术 nodejs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-数据库/">技术 数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术-微信小程序/">技术,微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB-node-js/">MongoDB node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/koa2-node-js/">koa2 node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-redux/">react, redux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/">其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/MongoDB-node-js/" style="font-size: 10px;">MongoDB node.js</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/koa2-node-js/" style="font-size: 10px;">koa2 node.js</a> <a href="/tags/react-redux/" style="font-size: 10px;">react, redux</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/其他/" style="font-size: 10px;">其他</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/11/mongoDB-study/">MongoDB学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/03/koa-study/">Koa学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/03/regular-expression/">JS正则表达式学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/26/use-redux-in-react/">在react项目中使用redux</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/change-job/">我的转职之路</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Gang Feng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
