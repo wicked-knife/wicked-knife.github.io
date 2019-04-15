@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>处理样式文件 | 冯罡的博客</title>
+    <meta name="description" content="冯罡的博客">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.e9c611b2.css" as="style"><link rel="preload" href="/assets/js/app.ff403cda.js" as="script"><link rel="preload" href="/assets/js/8.8cbd171f.js" as="script"><link rel="prefetch" href="/assets/js/10.a459bc4b.js"><link rel="prefetch" href="/assets/js/2.1a3627a8.js"><link rel="prefetch" href="/assets/js/3.25b87011.js"><link rel="prefetch" href="/assets/js/4.f4d4fcf2.js"><link rel="prefetch" href="/assets/js/5.75e19f3e.js"><link rel="prefetch" href="/assets/js/6.57b5fdce.js"><link rel="prefetch" href="/assets/js/7.78af12a0.js"><link rel="prefetch" href="/assets/js/9.9c32ee0b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e9c611b2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">冯罡的博客</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">目录</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">目录</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>数据库相关</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Webpack学习笔记</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/webpack/init.html" class="sidebar-link">项目初始化</a></li><li><a href="/webpack/resource-management.html" class="sidebar-link">资源管理</a></li><li><a href="/webpack/processing-style-files.html" class="active sidebar-link">处理样式文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack/processing-style-files.html#对scss文件进行处理" class="sidebar-link">对SCSS文件进行处理</a></li><li class="sidebar-sub-header"><a href="/webpack/processing-style-files.html#自动添加浏览器前缀" class="sidebar-link">自动添加浏览器前缀</a></li><li class="sidebar-sub-header"><a href="/webpack/processing-style-files.html#css模块化-css-module" class="sidebar-link">CSS模块化(css-module)</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="处理样式文件"><a href="#处理样式文件" aria-hidden="true" class="header-anchor">#</a> 处理样式文件</h1> <p>安装<code>style-loader</code>, <code>css-loader</code>对CSS文件进行处理。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> style<span class="token operator">-</span>loader css<span class="token operator">-</span>loader
+</code></pre></div><p><code>css-loader</code>: 主要用作解析CSS文件，使得CSS能够正确处理类似<code>@import './header.css'</code>这样的语法。
+<code>style-loader</code>: 主要将处理好的CSS代码以内联style标签插入HTML中。</p> <p>在<code>webpack.common.js</code>中作如下配置:</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>从loader配置在module字段中也可以看出在webpack中万物皆模块。</p> <p><code>test</code>:一个正则表达式，主要用来指定被处理的文件类型。这里处理<code>.css</code>后缀的CSS文件。</p> <p><code>use</code>:用来指定处理该种类型文件所需要的loader。值得注意的是loader的执行顺序是从后往前，即<code>css-loader</code>先处理CSS文件，处理完成后再交给<code>style-loader</code>。</p> <h2 id="对scss文件进行处理"><a href="#对scss文件进行处理" aria-hidden="true" class="header-anchor">#</a> 对SCSS文件进行处理</h2> <p>很多时候一个项目不可能只使用CSS,也需要使用SCSS或LESS等CSS预处理语言来进行开发，以提高开发效率，规范代码。</p> <p>同样地，要处理<code>.scss</code>文件就也需要对应的loader。</p> <p>安装<code>sass-loader</code>, <code>node-sass</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> sass<span class="token operator">-</span>loader node<span class="token operator">-</span>sass
+</code></pre></div><p><code>sass-loader</code>:主要用来加载和转译 SASS/SCSS 文件。
+<code>node-sass</code>: 主要用来编译SASS/SCSS 文件。</p> <p>在<code>webpack.common.js</code>中作如下配置:</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.(scss|css)$/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span> <span class="token string">'sass-loader'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="自动添加浏览器前缀"><a href="#自动添加浏览器前缀" aria-hidden="true" class="header-anchor">#</a> 自动添加浏览器前缀</h2> <p>一些CSS3属性需要兼容各大浏览器时，就不可避免地需要添加其前缀。如'transform'属性。</p> <p>使用<code>postcss-loader</code>配合<code>autoprefixer</code>即可解决解决这一需求。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> postcss<span class="token operator">-</span>loader autoprefixer
+</code></pre></div><p>创建一个<code>postcss.config.js</code>文件。进行如下配置：</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'autoprefixer'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>修改<code>webpack.common.js</code>中的配置</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.(scss|css)$/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span> <span class="token string">'sass-loader'</span><span class="token punctuation">,</span> <span class="token string">'postcss-loader'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样当使用一些需要做兼容性处理的CSS属性时，webpack就会自动为其加上浏览器前缀。</p> <h2 id="css模块化-css-module"><a href="#css模块化-css-module" aria-hidden="true" class="header-anchor">#</a> CSS模块化(css-module)</h2> <p>当进行组件化开发时，我们希望组件的CSS样式只应用到其自身上，而不污染全局。业界也有很多的解决方案，如BEM，styled-components。</p> <p>这里介绍比较热门的<code>css-module</code>。使用起来很简单，只需要配置一下'css-loader'即可。</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.(scss|css)$/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token string">'style-loader'</span><span class="token punctuation">,</span> 
+                    <span class="token punctuation">{</span>
+                        use<span class="token punctuation">:</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+                        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            importLoaders<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                            modules<span class="token punctuation">:</span> <span class="token boolean">true</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                    <span class="token string">'sass-loader'</span><span class="token punctuation">,</span> 
+                    <span class="token string">'postcss-loader'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>使用方式:</p> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">.header</span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> red
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> styles <span class="token keyword">from</span> <span class="token string">'./header.css'</span>
+
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'header'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>styles<span class="token punctuation">.</span>header<span class="token punctuation">)</span>
+</code></pre></div><p>其中配置项<code>importLoaders</code>用来指定<code>@import</code>命令导入其他CSS/SCSS文件时需要预先被几个loader处理。这里需要2个，即'postcss-loader'和'sass-loader'。</p> <p>但是这样配置比较死板，这样配置会导致所有的CSS,SCSS文件都变成<code>css-module</code>的形式。我们希望的是两种方式共存。</p> <p>我们这里借鉴<code>create-react-app</code>的解决方案。通过约定文件命名的方式来使用<code>css-module</code>。</p> <p>改变<code>webpack.common.js</code></p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.(css|scss)$/</span><span class="token punctuation">,</span>
+                loader<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style-loader'</span><span class="token punctuation">,</span> 
+                <span class="token punctuation">{</span>
+                    use<span class="token punctuation">:</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+                    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        importLoaders<span class="token punctuation">:</span> <span class="token number">2</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+                <span class="token string">'sass-loader'</span><span class="token punctuation">,</span> 
+                <span class="token string">'postcss-loader'</span>
+                <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.module\.(css|scss)$/</span><span class="token punctuation">,</span>
+                loader<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'style-loader'</span><span class="token punctuation">,</span> 
+                    <span class="token punctuation">{</span>
+                        use<span class="token punctuation">:</span> <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+                        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                            importLoaders<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                            modules<span class="token punctuation">:</span> <span class="token boolean">true</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">'sass-loader'</span><span class="token punctuation">,</span>
+                <span class="token string">'postcss-loader'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>普通CSS/SCSS文件这样引入:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token string">'./index.scss'</span>
+</code></pre></div><p><code>css-module</code>形式的CSS/SCSS文件这样命名及引入:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> styles <span class="token keyword">from</span> <span class="token string">'./header.module.scss'</span>
+</code></pre></div><p>即通过文件名的形式区分该样式文件是否需要使用<code>css-module</code>。</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/webpack/resource-management.html" class="prev">
+          资源管理
+        </a></span> <!----></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.ff403cda.js" defer></script><script src="/assets/js/8.8cbd171f.js" defer></script>
+  </body>
+</html>

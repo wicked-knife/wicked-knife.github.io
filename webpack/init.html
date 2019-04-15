@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>项目初始化 | 冯罡的博客</title>
+    <meta name="description" content="冯罡的博客">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.e9c611b2.css" as="style"><link rel="preload" href="/assets/js/app.ff403cda.js" as="script"><link rel="preload" href="/assets/js/7.78af12a0.js" as="script"><link rel="prefetch" href="/assets/js/10.a459bc4b.js"><link rel="prefetch" href="/assets/js/2.1a3627a8.js"><link rel="prefetch" href="/assets/js/3.25b87011.js"><link rel="prefetch" href="/assets/js/4.f4d4fcf2.js"><link rel="prefetch" href="/assets/js/5.75e19f3e.js"><link rel="prefetch" href="/assets/js/6.57b5fdce.js"><link rel="prefetch" href="/assets/js/8.8cbd171f.js"><link rel="prefetch" href="/assets/js/9.9c32ee0b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e9c611b2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">冯罡的博客</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">目录</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">目录</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>数据库相关</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Webpack学习笔记</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/webpack/init.html" class="active sidebar-link">项目初始化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack/init.html#_0-项目初始化" class="sidebar-link">(0) 项目初始化</a></li><li class="sidebar-sub-header"><a href="/webpack/init.html#_1-创建配置文件" class="sidebar-link">(1) 创建配置文件</a></li><li class="sidebar-sub-header"><a href="/webpack/init.html#_2-配置npm-scripts" class="sidebar-link">(2) 配置npm scripts</a></li></ul></li><li><a href="/webpack/resource-management.html" class="sidebar-link">资源管理</a></li><li><a href="/webpack/processing-style-files.html" class="sidebar-link">处理样式文件</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="项目初始化"><a href="#项目初始化" aria-hidden="true" class="header-anchor">#</a> 项目初始化</h1> <p>本笔记着重记录分析webpack中的一些复杂概念，对于一些简单配置不做讲解。</p> <h2 id="_0-项目初始化"><a href="#_0-项目初始化" aria-hidden="true" class="header-anchor">#</a> (0) 项目初始化</h2> <p>使用npm快速初始化<code>package.json</code>文件。</p> <div class="language-js extra-class"><pre class="language-js"><code>npm init <span class="token operator">-</span>y
+</code></pre></div><p>安装webpack, webpack-cli。(webpack-cli主要用作本地项目中在终端能够直接使用<code>webpack</code>命令)</p> <div class="language-js extra-class"><pre class="language-js"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> webpack webpack<span class="token operator">-</span>cli
+</code></pre></div><h2 id="_1-创建配置文件"><a href="#_1-创建配置文件" aria-hidden="true" class="header-anchor">#</a> (1) 创建配置文件</h2> <p>创建<code>webpack.common.js</code>文件，用作webpack配置文件的公共配置。并进行如下配置：</p> <div class="language-js extra-class"><pre class="language-js"><code>    module<span class="token punctuation">.</span>exports <span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            index<span class="token punctuation">:</span> <span class="token string">'./index.js'</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>意为将当前目录下index.js文件用作webpack打包的入口，webpack会从文件入口开始分析模块依赖（webpack中万物皆模块），并生成依赖图。
+使用对象键值对的形式进行配置打包后会自动根据键名生成打包好的文件。这样配置比较直观清晰。</p> <p>在命令行中执行</p> <div class="language-js extra-class"><pre class="language-js"><code>webpack <span class="token operator">--</span>config webpack<span class="token punctuation">.</span>common<span class="token punctuation">.</span>js
+</code></pre></div><p>即可执行打包操作。<code>--config</code>参数用作指定webpack配置文件。默认为<code>webpack.config.js</code>。</p> <h2 id="_2-配置npm-scripts"><a href="#_2-配置npm-scripts" aria-hidden="true" class="header-anchor">#</a> (2) 配置npm scripts</h2> <p>在项目<code>package.json</code>文件<code>scripts</code>字段进行如下配置:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    <span class="token string">&quot;scripts&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;bundle&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;webpack --config webpack.common.js&quot;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在命令行中直接执行<code>npm run bundle</code>即可进行打包操作。</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/javascript/regular-expression.html" class="prev">
+          JS正则表达式学习笔记
+        </a></span> <span class="next"><a href="/webpack/resource-management.html">
+          资源管理
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.ff403cda.js" defer></script><script src="/assets/js/7.78af12a0.js" defer></script>
+  </body>
+</html>
