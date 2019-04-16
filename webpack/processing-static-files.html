@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>处理静态资源文件 | 冯罡的博客</title>
+    <meta name="description" content="冯罡的博客">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.e9c611b2.css" as="style"><link rel="preload" href="/assets/js/app.017793a7.js" as="script"><link rel="preload" href="/assets/js/15.ed18d9f0.js" as="script"><link rel="prefetch" href="/assets/js/10.b59528b0.js"><link rel="prefetch" href="/assets/js/11.e01e54a2.js"><link rel="prefetch" href="/assets/js/12.14b9fc35.js"><link rel="prefetch" href="/assets/js/13.03878c5a.js"><link rel="prefetch" href="/assets/js/14.489b5660.js"><link rel="prefetch" href="/assets/js/16.8be1aa99.js"><link rel="prefetch" href="/assets/js/17.aecfc041.js"><link rel="prefetch" href="/assets/js/18.b3e2c563.js"><link rel="prefetch" href="/assets/js/19.ca0bde19.js"><link rel="prefetch" href="/assets/js/2.bcf10e33.js"><link rel="prefetch" href="/assets/js/20.e39db100.js"><link rel="prefetch" href="/assets/js/3.6fda0209.js"><link rel="prefetch" href="/assets/js/4.81fc7946.js"><link rel="prefetch" href="/assets/js/5.8f503f68.js"><link rel="prefetch" href="/assets/js/6.688bd32b.js"><link rel="prefetch" href="/assets/js/7.1fe2ab70.js"><link rel="prefetch" href="/assets/js/8.143bd39c.js"><link rel="prefetch" href="/assets/js/9.76b80282.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e9c611b2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">冯罡的博客</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">目录</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">目录</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>数据库相关</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Javascript</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Webpack学习笔记</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/webpack/init.html" class="sidebar-link">项目初始化</a></li><li><a href="/webpack/resource-management.html" class="sidebar-link">资源管理</a></li><li><a href="/webpack/processing-javascript-files.html" class="sidebar-link">处理JavaScript文件</a></li><li><a href="/webpack/processing-style-files.html" class="sidebar-link">处理样式文件</a></li><li><a href="/webpack/processing-static-files.html" class="active sidebar-link">处理静态资源文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webpack/processing-static-files.html#图片文件" class="sidebar-link">图片文件</a></li><li class="sidebar-sub-header"><a href="/webpack/processing-static-files.html#字体及其他静态资源文件" class="sidebar-link">字体及其他静态资源文件</a></li></ul></li><li><a href="/webpack/dev-server.html" class="sidebar-link">搭建开发环境</a></li><li><a href="/webpack/HMR.html" class="sidebar-link">模块热替换</a></li><li><a href="/webpack/tree-shaking.html" class="sidebar-link">tree-shaking</a></li><li><a href="/webpack/code-split.html" class="sidebar-link">代码拆分</a></li><li><a href="/webpack/plugins.html" class="sidebar-link">常用插件</a></li><li><a href="/webpack/eslint.html" class="sidebar-link">在webpack中使用eslint</a></li><li><a href="/webpack/webpack-mode.html" class="sidebar-link">开发环境的区分</a></li><li><a href="/webpack/multiple-pages-app.html" class="sidebar-link">多页应用的打包</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="处理静态资源文件"><a href="#处理静态资源文件" aria-hidden="true" class="header-anchor">#</a> 处理静态资源文件</h1> <p>一些静态资源文件如图片，字体文件在 webpack 中也被视为模块。同样需要相应的 loader 对其进行打包。</p> <h2 id="图片文件"><a href="#图片文件" aria-hidden="true" class="header-anchor">#</a> 图片文件</h2> <p>安装<code>url-loader</code></p> <div class="language-js extra-class"><pre class="language-js"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> url<span class="token operator">-</span>loader
+</code></pre></div><p>在<code>webpack.common.js</code>中作如下配置:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      test<span class="token punctuation">:</span> <span class="token regex">/\.(svg|jpe?g|gif|png|bmp)$/</span><span class="token punctuation">,</span>
+      use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        loader<span class="token punctuation">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span>
+        options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          name<span class="token punctuation">:</span> <span class="token string">'[name]_[hash:5].[ext]'</span><span class="token punctuation">,</span>
+          outputPath<span class="token punctuation">:</span> <span class="token string">'images'</span><span class="token punctuation">,</span>
+          limit<span class="token punctuation">:</span> <span class="token number">2048</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以在JS文件中这样引入图片文件:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> logo <span class="token keyword">from</span> <span class="token string">'./logo.png'</span>
+</code></pre></div><p>拿到的<code>logo</code>即是正确的图片路径。</p> <p><code>name</code>: 配置打包后的图片文件名。
+<code>outputPath</code>: 配置打包后图片存放的文件夹。这样配置打包后图片都会放在<code>dist/images</code>文件夹下。
+<code>limit</code>：配置对图片文件打包时的尺寸限制。大于该尺寸图片文件会被复制到dist/images目录下，小于该尺寸的图片会被打包成base64格式的字符串。</p> <h2 id="字体及其他静态资源文件"><a href="#字体及其他静态资源文件" aria-hidden="true" class="header-anchor">#</a> 字体及其他静态资源文件</h2> <p>安装<code>file-loader</code></p> <div class="language-js extra-class"><pre class="language-js"><code>npm i <span class="token operator">-</span><span class="token constant">D</span> file<span class="token operator">-</span>loader
+</code></pre></div><p>在<code>webpack.common.js</code>中作如下配置:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  <span class="token operator">...</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/\.(eot|ttf|woff2?|otf)$/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+          loader<span class="token punctuation">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
+          options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            name<span class="token punctuation">:</span> <span class="token string">'[name]_[hash:5].[ext]'</span><span class="token punctuation">,</span>
+            outputPath<span class="token punctuation">:</span> <span class="token string">'fonts'</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样配置即可将字体文件打包至<code>dist/fonts</code>文件夹下。</p> <p>其他类型的文件使用file-loader进行类似配置即可。</p> <p><code>file-loader</code>和<code>url-loader</code>功能类似，不过<code>url-loader</code>支持将图片转换成base64格式，所以其更适合打包图片类型文件。</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/webpack/processing-style-files.html" class="prev">
+          处理样式文件
+        </a></span> <span class="next"><a href="/webpack/dev-server.html">
+          搭建开发环境
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.017793a7.js" defer></script><script src="/assets/js/15.ed18d9f0.js" defer></script>
+  </body>
+</html>
